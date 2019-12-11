@@ -170,8 +170,7 @@
 
     <build>
         <finalName>MovieHouseManage</finalName>
-        <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
-            <plugins>
+         <plugins>
                 <plugin>
                     <artifactId>maven-clean-plugin</artifactId>
                     <version>3.1.0</version>
@@ -221,6 +220,5 @@
                     </configuration>
                 </plugin>
             </plugins>
-        </pluginManagement>
     </build>
 </project>

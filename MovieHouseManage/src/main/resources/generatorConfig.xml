@@ -18,10 +18,10 @@
 
         <!--jdbc的数据库连接 -->
         <jdbcConnection
-                driverClass="${jdbc.driverClass}"
-                connectionURL="${jdbc.url}"
-                userId="${jdbc.user}"
-                password="${jdbc.password}">
+                driverClass="${mysql.driver}"
+                connectionURL="${mysql.url}"
+                userId="${mysql.username}"
+                password="${mysql.password}">
         </jdbcConnection>
 
 
@@ -41,7 +41,7 @@
             <!-- 是否允许子包，即targetPackage.schemaName.tableName -->
             <property name="enableSubPackages" value="false"/>
             <!-- 是否对model添加 构造函数 true添加，false不添加-->
-            <property name="constructorBased" value="false"/>
+            <property name="constructorBased" value="true"/>
             <!-- 是否对类CHAR类型的列的数据进行trim操作 -->
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
