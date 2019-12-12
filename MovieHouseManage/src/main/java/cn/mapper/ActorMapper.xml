@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.mapper.ActorMapper" >
+  <resultMap id="BaseResultMap" type="cn.entity.Actor" >
+    <constructor >
+      <idArg column="a_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="a_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="a_sex" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="a_address" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="a_birthday" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    a_id, a_name, a_sex, a_address, a_birthday
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_actor
+    where a_id = #{aId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_actor
+    where a_id = #{aId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.entity.Actor" >
+    insert into t_actor (a_id, a_name, a_sex, 
+      a_address, a_birthday)
+    values (#{aId,jdbcType=INTEGER}, #{aName,jdbcType=VARCHAR}, #{aSex,jdbcType=VARCHAR}, 
+      #{aAddress,jdbcType=VARCHAR}, #{aBirthday,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.entity.Actor" >
+    insert into t_actor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="aId != null" >
+        a_id,
+      </if>
+      <if test="aName != null" >
+        a_name,
+      </if>
+      <if test="aSex != null" >
+        a_sex,
+      </if>
+      <if test="aAddress != null" >
+        a_address,
+      </if>
+      <if test="aBirthday != null" >
+        a_birthday,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="aId != null" >
+        #{aId,jdbcType=INTEGER},
+      </if>
+      <if test="aName != null" >
+        #{aName,jdbcType=VARCHAR},
+      </if>
+      <if test="aSex != null" >
+        #{aSex,jdbcType=VARCHAR},
+      </if>
+      <if test="aAddress != null" >
+        #{aAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="aBirthday != null" >
+        #{aBirthday,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.entity.Actor" >
+    update t_actor
+    <set >
+      <if test="aName != null" >
+        a_name = #{aName,jdbcType=VARCHAR},
+      </if>
+      <if test="aSex != null" >
+        a_sex = #{aSex,jdbcType=VARCHAR},
+      </if>
+      <if test="aAddress != null" >
+        a_address = #{aAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="aBirthday != null" >
+        a_birthday = #{aBirthday,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where a_id = #{aId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.entity.Actor" >
+    update t_actor
+    set a_name = #{aName,jdbcType=VARCHAR},
+      a_sex = #{aSex,jdbcType=VARCHAR},
+      a_address = #{aAddress,jdbcType=VARCHAR},
+      a_birthday = #{aBirthday,jdbcType=TIMESTAMP}
+    where a_id = #{aId,jdbcType=INTEGER}
+  </update>
+</mapper>
