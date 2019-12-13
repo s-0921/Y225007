@@ -64,7 +64,7 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="actorimg" domainObjectName="ActorImg"
+        <table tableName="t_actorimg" domainObjectName="ActorImg"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
@@ -94,7 +94,7 @@
                selectByExampleQueryId="false">
         </table>
 
-        <table tableName="film" domainObjectName="Film"
+        <table tableName="t_film" domainObjectName="Film"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
