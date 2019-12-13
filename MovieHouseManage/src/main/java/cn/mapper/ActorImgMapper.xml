@@ -14,21 +14,21 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from actorimg
+    from t_actorimg
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from actorimg
+    delete from t_actorimg
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.entity.ActorImg" >
-    insert into actorimg (id, a_img_url, a_id
+    insert into t_actorimg (id, a_img_url, a_id
       )
     values (#{id,jdbcType=INTEGER}, #{aImgUrl,jdbcType=VARCHAR}, #{aId,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="cn.entity.ActorImg" >
-    insert into actorimg
+    insert into t_actorimg
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -53,7 +53,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="cn.entity.ActorImg" >
-    update actorimg
+    update t_actorimg
     <set >
       <if test="aImgUrl != null" >
         a_img_url = #{aImgUrl,jdbcType=VARCHAR},
@@ -65,7 +65,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.entity.ActorImg" >
-    update actorimg
+    update t_actorimg
     set a_img_url = #{aImgUrl,jdbcType=VARCHAR},
       a_id = #{aId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
