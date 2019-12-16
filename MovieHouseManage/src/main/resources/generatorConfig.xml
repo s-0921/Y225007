@@ -94,7 +94,7 @@
                selectByExampleQueryId="false">
         </table>
 
-        <table tableName="film" domainObjectName="Film"
+        <table tableName="t_film" domainObjectName="Film"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">

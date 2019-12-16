@@ -2,24 +2,27 @@ package cn.entity;
 
 import java.util.Date;
 
+/**
+ * 放映记录Bean
+ */
 public class Record {
-    private Integer rId;
+    private Integer rId;//编号
 
-    private String fId;
+    private String fId;//电影
 
-    private String cId;
+    private String cId;//影院
 
-    private String roomId;
+    private String roomId;//放映厅编号
 
-    private Date starttime;
+    private Date starttime;//开始时间
 
-    private Date endtime;
+    private Date endtime;//结束时间
 
-    private Integer totalNum;
+    private Integer totalNum;//总座位数
 
-    private Integer selNum;
+    private Integer selNum;//售出座位数
 
-    private Double rPrice;
+    private Double rPrice;//播放厅累计收入
 
     public Record(Integer rId, String fId, String cId, String roomId, Date starttime, Date endtime, Integer totalNum, Integer selNum, Double rPrice) {
         this.rId = rId;

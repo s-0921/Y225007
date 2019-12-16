@@ -2,16 +2,19 @@ package cn.entity;
 
 import java.util.Date;
 
+/**
+ * 演员Bean
+ */
 public class Actor {
-    private Integer aId;
+    private Integer aId;//主键编号
 
-    private String aName;
+    private String aName;//演员名
 
-    private String aSex;
+    private String aSex;//演员性别
 
-    private String aAddress;
+    private String aAddress;//演员籍贯
 
-    private Date aBirthday;
+    private Date aBirthday;//演员生日
 
     public Actor(Integer aId, String aName, String aSex, String aAddress, Date aBirthday) {
         this.aId = aId;

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.mapper.FilmMapper" >
+  <resultMap id="BaseResultMap" type="cn.entity.Film" >
+    <constructor >
+      <idArg column="f_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="f_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="f_type" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="f_country" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="f_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="f_duration" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="f_priture_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="f_intro" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="f_language" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="f_office" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="f_score" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="f_expectation_value" jdbcType="DOUBLE" javaType="java.lang.Double" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    f_id, f_name, f_type, f_country, f_time, f_duration, f_priture_url, f_intro, f_language, 
+    f_office, f_score, f_expectation_value
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_film
+    where f_id = #{fId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_film
+    where f_id = #{fId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.entity.Film" >
+    insert into t_film (f_id, f_name, f_type, 
+      f_country, f_time, f_duration, 
+      f_priture_url, f_intro, f_language, 
+      f_office, f_score, f_expectation_value
+      )
+    values (#{fId,jdbcType=INTEGER}, #{fName,jdbcType=VARCHAR}, #{fType,jdbcType=VARCHAR}, 
+      #{fCountry,jdbcType=VARCHAR}, #{fTime,jdbcType=TIMESTAMP}, #{fDuration,jdbcType=INTEGER}, 
+      #{fPritureUrl,jdbcType=VARCHAR}, #{fIntro,jdbcType=VARCHAR}, #{fLanguage,jdbcType=VARCHAR}, 
+      #{fOffice,jdbcType=DOUBLE}, #{fScore,jdbcType=DOUBLE}, #{fExpectationValue,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.entity.Film" >
+    insert into t_film
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fId != null" >
+        f_id,
+      </if>
+      <if test="fName != null" >
+        f_name,
+      </if>
+      <if test="fType != null" >
+        f_type,
+      </if>
+      <if test="fCountry != null" >
+        f_country,
+      </if>
+      <if test="fTime != null" >
+        f_time,
+      </if>
+      <if test="fDuration != null" >
+        f_duration,
+      </if>
+      <if test="fPritureUrl != null" >
+        f_priture_url,
+      </if>
+      <if test="fIntro != null" >
+        f_intro,
+      </if>
+      <if test="fLanguage != null" >
+        f_language,
+      </if>
+      <if test="fOffice != null" >
+        f_office,
+      </if>
+      <if test="fScore != null" >
+        f_score,
+      </if>
+      <if test="fExpectationValue != null" >
+        f_expectation_value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fId != null" >
+        #{fId,jdbcType=INTEGER},
+      </if>
+      <if test="fName != null" >
+        #{fName,jdbcType=VARCHAR},
+      </if>
+      <if test="fType != null" >
+        #{fType,jdbcType=VARCHAR},
+      </if>
+      <if test="fCountry != null" >
+        #{fCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="fTime != null" >
+        #{fTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fDuration != null" >
+        #{fDuration,jdbcType=INTEGER},
+      </if>
+      <if test="fPritureUrl != null" >
+        #{fPritureUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="fIntro != null" >
+        #{fIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="fLanguage != null" >
+        #{fLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="fOffice != null" >
+        #{fOffice,jdbcType=DOUBLE},
+      </if>
+      <if test="fScore != null" >
+        #{fScore,jdbcType=DOUBLE},
+      </if>
+      <if test="fExpectationValue != null" >
+        #{fExpectationValue,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.entity.Film" >
+    update t_film
+    <set >
+      <if test="fName != null" >
+        f_name = #{fName,jdbcType=VARCHAR},
+      </if>
+      <if test="fType != null" >
+        f_type = #{fType,jdbcType=VARCHAR},
+      </if>
+      <if test="fCountry != null" >
+        f_country = #{fCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="fTime != null" >
+        f_time = #{fTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fDuration != null" >
+        f_duration = #{fDuration,jdbcType=INTEGER},
+      </if>
+      <if test="fPritureUrl != null" >
+        f_priture_url = #{fPritureUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="fIntro != null" >
+        f_intro = #{fIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="fLanguage != null" >
+        f_language = #{fLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="fOffice != null" >
+        f_office = #{fOffice,jdbcType=DOUBLE},
+      </if>
+      <if test="fScore != null" >
+        f_score = #{fScore,jdbcType=DOUBLE},
+      </if>
+      <if test="fExpectationValue != null" >
+        f_expectation_value = #{fExpectationValue,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where f_id = #{fId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.entity.Film" >
+    update t_film
+    set f_name = #{fName,jdbcType=VARCHAR},
+      f_type = #{fType,jdbcType=VARCHAR},
+      f_country = #{fCountry,jdbcType=VARCHAR},
+      f_time = #{fTime,jdbcType=TIMESTAMP},
+      f_duration = #{fDuration,jdbcType=INTEGER},
+      f_priture_url = #{fPritureUrl,jdbcType=VARCHAR},
+      f_intro = #{fIntro,jdbcType=VARCHAR},
+      f_language = #{fLanguage,jdbcType=VARCHAR},
+      f_office = #{fOffice,jdbcType=DOUBLE},
+      f_score = #{fScore,jdbcType=DOUBLE},
+      f_expectation_value = #{fExpectationValue,jdbcType=DOUBLE}
+    where f_id = #{fId,jdbcType=INTEGER}
+  </update>
+</mapper>

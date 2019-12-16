@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.mapper.FilmImgMapper">
+  <resultMap id="BaseResultMap" type="cn.entity.FilmImg">
+    <constructor>
+      <arg column="id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="f_img_url" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="f_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="cn.entity.FilmImg">
+    insert into t_filmimg (id, f_img_url, f_id
+      )
+    values (#{id,jdbcType=VARCHAR}, #{fImgUrl,jdbcType=VARCHAR}, #{fId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.entity.FilmImg">
+    insert into t_filmimg
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="fImgUrl != null">
+        f_img_url,
+      </if>
+      <if test="fId != null">
+        f_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="fImgUrl != null">
+        #{fImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="fId != null">
+        #{fId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

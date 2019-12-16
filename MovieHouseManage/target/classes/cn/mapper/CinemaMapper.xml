@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.mapper.CinemaMapper">
+  <resultMap id="BaseResultMap" type="cn.entity.Cinema">
+    <constructor>
+      <idArg column="c_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="c_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="c_address" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="c_phone" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="a_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="c_intro" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="c_img_url" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    c_id, c_name, c_address, c_phone, a_id, c_intro, c_img_url
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_cinema
+    where c_id = #{cId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_cinema
+    where c_id = #{cId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.entity.Cinema">
+    insert into t_cinema (c_id, c_name, c_address, 
+      c_phone, a_id, c_intro, 
+      c_img_url)
+    values (#{cId,jdbcType=INTEGER}, #{cName,jdbcType=VARCHAR}, #{cAddress,jdbcType=VARCHAR}, 
+      #{cPhone,jdbcType=VARCHAR}, #{aId,jdbcType=INTEGER}, #{cIntro,jdbcType=VARCHAR}, 
+      #{cImgUrl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.entity.Cinema">
+    insert into t_cinema
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cId != null">
+        c_id,
+      </if>
+      <if test="cName != null">
+        c_name,
+      </if>
+      <if test="cAddress != null">
+        c_address,
+      </if>
+      <if test="cPhone != null">
+        c_phone,
+      </if>
+      <if test="aId != null">
+        a_id,
+      </if>
+      <if test="cIntro != null">
+        c_intro,
+      </if>
+      <if test="cImgUrl != null">
+        c_img_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cId != null">
+        #{cId,jdbcType=INTEGER},
+      </if>
+      <if test="cName != null">
+        #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="cAddress != null">
+        #{cAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="cPhone != null">
+        #{cPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="aId != null">
+        #{aId,jdbcType=INTEGER},
+      </if>
+      <if test="cIntro != null">
+        #{cIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="cImgUrl != null">
+        #{cImgUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.entity.Cinema">
+    update t_cinema
+    <set>
+      <if test="cName != null">
+        c_name = #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="cAddress != null">
+        c_address = #{cAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="cPhone != null">
+        c_phone = #{cPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="aId != null">
+        a_id = #{aId,jdbcType=INTEGER},
+      </if>
+      <if test="cIntro != null">
+        c_intro = #{cIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="cImgUrl != null">
+        c_img_url = #{cImgUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where c_id = #{cId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.entity.Cinema">
+    update t_cinema
+    set c_name = #{cName,jdbcType=VARCHAR},
+      c_address = #{cAddress,jdbcType=VARCHAR},
+      c_phone = #{cPhone,jdbcType=VARCHAR},
+      a_id = #{aId,jdbcType=INTEGER},
+      c_intro = #{cIntro,jdbcType=VARCHAR},
+      c_img_url = #{cImgUrl,jdbcType=VARCHAR}
+    where c_id = #{cId,jdbcType=INTEGER}
+  </update>
+</mapper>

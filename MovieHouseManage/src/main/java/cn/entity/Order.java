@@ -2,24 +2,27 @@ package cn.entity;
 
 import java.util.Date;
 
+/**
+ * 订单Bean
+ */
 public class Order {
-    private Integer oId;
+    private Integer oId;//编号
 
-    private Integer uId;
+    private Integer uId;//用户编号
 
-    private Integer rId;
+    private Integer rId;//播放记录
 
-    private Integer seatNum;
+    private Integer seatNum;//座位数量
 
-    private String seatInfo;
+    private String seatInfo;//座位信息
 
-    private Double money;
+    private Double money;//金额
 
-    private Integer status;
+    private Integer status;//状态
 
-    private Date addTime;
+    private Date addTime;//购买时间
 
-    private Integer oPhone;
+    private Integer oPhone;//取票手机号
 
     public Order(Integer oId, Integer uId, Integer rId, Integer seatNum, String seatInfo, Double money, Integer status, Date addTime, Integer oPhone) {
         this.oId = oId;
