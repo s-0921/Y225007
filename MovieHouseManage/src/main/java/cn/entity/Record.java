@@ -5,11 +5,11 @@ import java.util.Date;
 public class Record {
     private Integer rId;
 
-    private String fId;
+    private Integer fId;
 
-    private String cId;
+    private Integer cId;
 
-    private String roomId;
+    private Integer roomId;
 
     private Date starttime;
 
@@ -21,7 +21,7 @@ public class Record {
 
     private Double rPrice;
 
-    public Record(Integer rId, String fId, String cId, String roomId, Date starttime, Date endtime, Integer totalNum, Integer selNum, Double rPrice) {
+    public Record(Integer rId, Integer fId, Integer cId, Integer roomId, Date starttime, Date endtime, Integer totalNum, Integer selNum, Double rPrice) {
         this.rId = rId;
         this.fId = fId;
         this.cId = cId;
@@ -45,28 +45,26 @@ public class Record {
         this.rId = rId;
     }
 
-    public String getfId() {
+    public Integer getfId() {
         return fId;
     }
 
-    public void setfId(String fId) {
-        this.fId = fId == null ? null : fId.trim();
-    }
+    public void setfId(Integer fId) { this.fId = fId == null ? null : fId; }
 
-    public String getcId() {
+    public Integer getcId() {
         return cId;
     }
 
-    public void setcId(String cId) {
-        this.cId = cId == null ? null : cId.trim();
+    public void setcId(Integer cId) {
+        this.cId = cId == null ? null : cId;
     }
 
-    public String getRoomId() {
+    public Integer getRoomId() {
         return roomId;
     }
 
-    public void setRoomId(String roomId) {
-        this.roomId = roomId == null ? null : roomId.trim();
+    public void setRoomId(Integer roomId) {
+        this.roomId = roomId == null ? null : roomId;
     }
 
     public Date getStarttime() {

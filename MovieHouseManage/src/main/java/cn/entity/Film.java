@@ -2,32 +2,38 @@ package cn.entity;
 
 import java.util.Date;
 
+/**
+ * 实体类：电影
+ */
 public class Film {
     private Integer fId;
 
-    private String fName;
+    private String fName;//电影名
 
-    private String fType;
+    private String fType;//类型
 
-    private String fCountry;
+    private String fCountry;//国家
 
-    private Date fTime;
+    private Date fTime;//上映时间
 
-    private Integer fDuration;
+    private Integer fDuration;//时长
 
-    private String fPritureUrl;
+    private String fPritureUrl;//海报路径
 
-    private String fIntro;
+    private String fIntro;//简介
 
-    private String fLanguage;
+    private String fLanguage;//语言版本
 
-    private Double fOffice;
+    private Double fOffice;//票房
 
-    private Double fScore;
+    private Double fScore;//评分
 
-    private Double fExpectationValue;
+    private Double fExpectationValue;//期待值
 
-    public Film(Integer fId, String fName, String fType, String fCountry, Date fTime, Integer fDuration, String fPritureUrl, String fIntro, String fLanguage, Double fOffice, Double fScore, Double fExpectationValue) {
+    private Integer fStatus;//电影状态
+
+
+    public Film(Integer fId, String fName, String fType, String fCountry, Date fTime, Integer fDuration, String fPritureUrl, String fIntro, String fLanguage, Double fOffice, Double fScore, Double fExpectationValue, Integer fStatus) {
         this.fId = fId;
         this.fName = fName;
         this.fType = fType;
@@ -40,6 +46,7 @@ public class Film {
         this.fOffice = fOffice;
         this.fScore = fScore;
         this.fExpectationValue = fExpectationValue;
+        this.fStatus = fStatus;
     }
 
     public Film() {
@@ -140,5 +147,13 @@ public class Film {
 
     public void setfExpectationValue(Double fExpectationValue) {
         this.fExpectationValue = fExpectationValue;
+    }
+
+    public Integer getfStatus() {
+        return fStatus;
+    }
+
+    public void setfStatus(Integer fStatus) {
+        this.fStatus = fStatus;
     }
 }

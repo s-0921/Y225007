@@ -1,11 +1,14 @@
 package cn.entity;
 
+/**
+ * 实体类：地址类
+ */
 public class Address {
     private Integer aId;
 
-    private String aName;
+    private String aName;//地址名
 
-    private Integer priId;
+    private Integer priId;//父地址id
 
     public Address(Integer aId, String aName, Integer priId) {
         this.aId = aId;
