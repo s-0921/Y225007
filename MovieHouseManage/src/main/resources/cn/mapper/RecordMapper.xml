@@ -4,9 +4,9 @@
   <resultMap id="BaseResultMap" type="cn.entity.Record" >
     <constructor >
       <idArg column="r_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="f_id" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="c_id" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="room_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="f_id" jdbcType="VARCHAR" javaType="java.lang.Integer" />
+      <arg column="c_id" jdbcType="VARCHAR" javaType="java.lang.Integer" />
+      <arg column="room_id" jdbcType="VARCHAR" javaType="java.lang.Integer" />
       <arg column="starttime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="endtime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="total_num" jdbcType="INTEGER" javaType="java.lang.Integer" />

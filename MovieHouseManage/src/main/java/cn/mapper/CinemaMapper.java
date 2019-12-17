@@ -3,15 +3,15 @@ package cn.mapper;
 import cn.entity.Cinema;
 
 public interface CinemaMapper {
-    int deleteByPrimaryKey(Integer cId);
+    public int deleteByPrimaryKey(Integer cId);
 
-    int insert(Cinema record);
+    public int insert(Cinema record);
 
-    int insertSelective(Cinema record);
+    public int insertSelective(Cinema record);
 
-    Cinema selectByPrimaryKey(Integer cId);
+    public Cinema selectByPrimaryKey(Integer cId);
 
-    int updateByPrimaryKeySelective(Cinema record);
+    public int updateByPrimaryKeySelective(Cinema record);
 
-    int updateByPrimaryKey(Cinema record);
+    public int updateByPrimaryKey(Cinema record);
 }

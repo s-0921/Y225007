@@ -3,15 +3,15 @@ package cn.mapper;
 import cn.entity.Record;
 
 public interface RecordMapper {
-    int deleteByPrimaryKey(Integer rId);
+    public int deleteByPrimaryKey(Integer rId);
 
-    int insert(Record record);
+    public int insert(Record record);
 
-    int insertSelective(Record record);
+    public int insertSelective(Record record);
 
-    Record selectByPrimaryKey(Integer rId);
+    public Record selectByPrimaryKey(Integer rId);
 
-    int updateByPrimaryKeySelective(Record record);
+    public int updateByPrimaryKeySelective(Record record);
 
-    int updateByPrimaryKey(Record record);
+    public int updateByPrimaryKey(Record record);
 }

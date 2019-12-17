@@ -3,15 +3,15 @@ package cn.mapper;
 import cn.entity.Actor;
 
 public interface ActorMapper {
-    int deleteByPrimaryKey(Integer aId);
+    public int deleteByPrimaryKey(Integer aId);
 
-    int insert(Actor record);
+    public int insert(Actor record);
 
-    int insertSelective(Actor record);
+    public int insertSelective(Actor record);
 
-    Actor selectByPrimaryKey(Integer aId);
+    public Actor selectByPrimaryKey(Integer aId);
 
-    int updateByPrimaryKeySelective(Actor record);
+    public int updateByPrimaryKeySelective(Actor record);
 
-    int updateByPrimaryKey(Actor record);
+    public int updateByPrimaryKey(Actor record);
 }

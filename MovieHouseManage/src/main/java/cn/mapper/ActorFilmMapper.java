@@ -3,15 +3,15 @@ package cn.mapper;
 import cn.entity.ActorFilm;
 
 public interface ActorFilmMapper {
-    int deleteByPrimaryKey(Integer id);
+    public int deleteByPrimaryKey(Integer id);
 
-    int insert(ActorFilm record);
+    public int insert(ActorFilm record);
 
-    int insertSelective(ActorFilm record);
+    public int insertSelective(ActorFilm record);
 
-    ActorFilm selectByPrimaryKey(Integer id);
+    public ActorFilm selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(ActorFilm record);
+    public int updateByPrimaryKeySelective(ActorFilm record);
 
-    int updateByPrimaryKey(ActorFilm record);
+    public int updateByPrimaryKey(ActorFilm record);
 }
