@@ -1,17 +1,20 @@
 package cn.entity;
 
+/**
+ * 放映厅信息Bean
+ */
 public class Room {
-    private Integer roomId;
+    private Integer roomId;//编号
 
-    private String roomName;
+    private String roomName;//放映厅名
 
-    private String roomContent;
+    private String roomContent;//座位布局信息
 
-    private String roomType;
+    private String roomType;//放映厅类型
 
-    private Integer roomNum;
+    private Integer roomNum;//座位数
 
-    private Integer cId;
+    private Integer cId;//影院编号
 
     public Room(Integer roomId, String roomName, String roomContent, String roomType, Integer roomNum, Integer cId) {
         this.roomId = roomId;

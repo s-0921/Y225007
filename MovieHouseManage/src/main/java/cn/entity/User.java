@@ -2,28 +2,36 @@ package cn.entity;
 
 import java.util.Date;
 
+/**
+ * 用户Bean
+ */
 public class User {
-    private Integer uIdu;
+    private Integer uIdu;//编号
 
-    private String uName;
+    private String uName;//昵称
 
-    private String uPwd;
+    private String uPwd;//密码
 
-    private String uSex;
+    private String uSex;//性别
 
-    private Date brithday;
+    private Date birthday;//生日
 
-    private String animation;
+    private String animation;//生活状态
 
-    private String uPhone;
+    private String uPhone;//联系方式
 
-    public User(Integer uIdu, String uName, String uPwd, String uSex, Date brithday, String animation, String uPhone) {
+    public User(Integer uIdu, String uName, String uPwd, String uSex, Date birthday, String animation, String uPhone) {
         this.uIdu = uIdu;
         this.uName = uName;
         this.uPwd = uPwd;
         this.uSex = uSex;
-        this.brithday = brithday;
+        this.birthday = birthday;
         this.animation = animation;
+        this.uPhone = uPhone;
+    }
+
+    public User(String uPwd, String uPhone) {
+        this.uPwd = uPwd;
         this.uPhone = uPhone;
     }
 
@@ -63,12 +71,12 @@ public class User {
         this.uSex = uSex == null ? null : uSex.trim();
     }
 
-    public Date getBrithday() {
-        return brithday;
+    public Date getBirthday() {
+        return birthday;
     }
 
-    public void setBrithday(Date brithday) {
-        this.brithday = brithday;
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
     public String getAnimation() {

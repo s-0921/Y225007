@@ -41,19 +41,19 @@
         <property name="dataSource" ref="dataSource"/>
         <!--批量起别名-->
         <property name="typeAliasesPackage" value="cn.entity"/>
-        <!--配置分页-->
+        <!--配置分页
         <property name="plugins">
             <array>
                 <bean class="com.github.pagehelper.PageInterceptor">
-                    <property name="properties">
-                        <!--使用下面的方式配置参数，一行配置一个 -->
+                    <property name="properties">-->
+                        <!--使用下面的方式配置参数，一行配置一个
                         <value>
                             params=value1
                         </value>
                     </property>
                 </bean>
             </array>
-        </property>
+        </property>-->
     </bean>
     <!-- 扫描Mapper接口和文件 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" id="mapperScannerConfigurer">

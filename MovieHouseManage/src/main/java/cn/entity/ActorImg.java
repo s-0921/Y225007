@@ -1,11 +1,14 @@
 package cn.entity;
 
+/**
+ * 演员图片
+ */
 public class ActorImg {
-    private Integer id;
+    private Integer id;//编号
 
-    private String aImgUrl;
+    private String aImgUrl;//图片路径
 
-    private Integer aId;
+    private Integer aId;//演员编号
 
     public ActorImg(Integer id, String aImgUrl, Integer aId) {
         this.id = id;

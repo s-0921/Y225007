@@ -1,11 +1,14 @@
 package cn.entity;
 
+/**
+ * 地域Bean
+ */
 public class Address {
-    private Integer aId;
+    private Integer aId;//编号
 
-    private String aName;
+    private String aName;//地名
 
-    private Integer priId;
+    private Integer priId;//父级地名编号
 
     public Address(Integer aId, String aName, Integer priId) {
         this.aId = aId;

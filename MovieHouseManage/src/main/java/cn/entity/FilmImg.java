@@ -1,11 +1,14 @@
 package cn.entity;
 
+/**
+ * 电影图片Bean
+ */
 public class FilmImg {
-    private String id;
+    private String id;//编号
 
-    private String fImgUrl;
+    private String fImgUrl;//电影宣传图片
 
-    private Integer fId;
+    private Integer fId;//电影编号
 
     public FilmImg(String id, String fImgUrl, Integer fId) {
         this.id = id;
