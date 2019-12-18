@@ -17,6 +17,6 @@
     <title>Title</title>
 </head>
 <body>
-<jsp:forward page="WEB-INF/jsp/SeatNumber.jsp"></jsp:forward>
+<jsp:forward page="WEB-INF/jsp/AddFilm.jsp"></jsp:forward>
 </body>
 </html>
