@@ -17,9 +17,10 @@
     <!-- 加载注解  -->
     <mvc:annotation-driven/>
     <!-- 配置视图-->
-    <mvc:view-controller path="/loginUI" view-name="login"/>
+    <mvc:view-controller path="/mainUI" view-name="FilmMain"/>
     <mvc:view-controller path="/registerUI" view-name="register"/>
-    <mvc:view-controller path="/main" view-name="main"/>
+    <mvc:view-controller path="/file" view-name="FilmBackstage"/>
+    <mvc:view-controller path="/seat" view-name="SeatNumber"/>
 
     <mvc:resources mapping="/js/**" location="/js/"/>
     <mvc:resources mapping="/cn/**" location="/cn/controller"/>
