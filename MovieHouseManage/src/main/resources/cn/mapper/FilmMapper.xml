@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.mapper.FilmMapper" >
-
   <resultMap id="BaseResultMap" type="cn.entity.Film" >
     <constructor >
       <idArg column="f_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
@@ -18,12 +17,10 @@
       <arg column="f_expectation_value" jdbcType="DOUBLE" javaType="java.lang.Double" />
     </constructor>
   </resultMap>
-
   <sql id="Base_Column_List" >
     f_id, f_name, f_type, f_country, f_time, f_duration, f_priture_url, f_intro, f_language, 
     f_office, f_score, f_expectation_value
   </sql>
-
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

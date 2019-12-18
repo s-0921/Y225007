@@ -2,6 +2,7 @@ package cn.mapper;
 
 import cn.entity.Film;
 
+<<<<<<< HEAD
 import java.util.Date;
 import java.util.List;
 
@@ -42,4 +43,18 @@ public interface FilmMapper {
 
     //根据动态条件（上映时间，电影类型，区域，年代）查询电影列表
     public List<Film> selectByCondition();
+=======
+public interface FilmMapper {
+    int deleteByPrimaryKey(Integer fId);
+
+    int insert(Film record);
+
+    int insertSelective(Film record);
+
+    Film selectByPrimaryKey(Integer fId);
+
+    int updateByPrimaryKeySelective(Film record);
+
+    int updateByPrimaryKey(Film record);
+>>>>>>> 851f505181169de7bf356064d9085808d5224193
 }

@@ -1,14 +1,15 @@
-package cn.entity;
+﻿package cn.entity;
+
 
 /**
- * 实体类：演职人员和电影  的关联
- * */
+ * 演员所参演电影Bean
+ */
 public class ActorFilm {
-    private Integer id;
+    private Integer id;//编号
 
-    private Integer aId;//演职人员id
+    private String aId;//演员编号
 
-    private Integer fId;//电影id
+    private String fId;//电影编号
 
     public ActorFilm(Integer id, Integer aId, Integer fId) {
         this.id = id;

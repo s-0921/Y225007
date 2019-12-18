@@ -1,14 +1,15 @@
-package cn.entity;
+﻿package cn.entity;
 
 /**
- * 实体类：演职人员 和 图片
+ * 演员图片
  */
 public class ActorImg {
-    private Integer id;
+    private Integer id;//编号
 
-    private String aImgUrl;//头像路径
+    private String aImgUrl;//图片路径
 
-    private Integer aId;//演职人员id
+    private Integer aId;//演员编号
+
 
     public ActorImg(Integer id, String aImgUrl, Integer aId) {
         this.id = id;

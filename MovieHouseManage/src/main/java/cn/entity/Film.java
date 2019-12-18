@@ -1,4 +1,4 @@
-package cn.entity;
+﻿package cn.entity;
 
 import java.util.Date;
 
@@ -6,23 +6,23 @@ import java.util.Date;
  * 实体类：电影
  */
 public class Film {
-    private Integer fId;
+    private Integer fId;//编号
 
     private String fName;//电影名
 
-    private String fType;//类型
+    private String fType;//电影类型
 
-    private String fCountry;//国家
+    private String fCountry;//电影国家
 
     private Date fTime;//上映时间
 
-    private Integer fDuration;//时长
+    private Integer fDuration;//播放时长
 
-    private String fPritureUrl;//海报路径
+    private String fPritureUrl;//地址海报
 
-    private String fIntro;//简介
+    private String fIntro;//剧情简介
 
-    private String fLanguage;//语言版本
+    private String fLanguage;//语言
 
     private Double fOffice;//票房
 
@@ -32,8 +32,7 @@ public class Film {
 
     private Integer fStatus;//电影状态
 
-
-    public Film(Integer fId, String fName, String fType, String fCountry, Date fTime, Integer fDuration, String fPritureUrl, String fIntro, String fLanguage, Double fOffice, Double fScore, Double fExpectationValue, Integer fStatus) {
+    public Film(Integer fId, String fName, String fType, String fCountry, Date fTime, Integer fDuration, String fPritureUrl, String fIntro, String fLanguage, Double fOffice, Double fScore, Double fExpectationValue) {
         this.fId = fId;
         this.fName = fName;
         this.fType = fType;

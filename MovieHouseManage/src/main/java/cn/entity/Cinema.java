@@ -1,22 +1,22 @@
-package cn.entity;
+﻿package cn.entity;
 
 /**
- * 实体类：电影院
+ * 电影院Bean
  */
 public class Cinema {
-    private Integer cId;
+    private Integer cId;//编号
 
-    private String cName;//影院名
+    private String cName;//名称
 
-    private String cAddress;//地址
+    private String cAddress;//所在地详细地址
 
-    private String cPhone;//电话
+    private String cPhone;//联系方式
 
-    private Integer aId;//地区id
+    private Integer aId;//地域编号
 
-    private String cIntro;//影院简介
+    private String cIntro;//简介
 
-    private String cImgUrl;//头像路径
+    private String cImgUrl;//宣传图
 
     public Cinema(Integer cId, String cName, String cAddress, String cPhone, Integer aId, String cIntro, String cImgUrl) {
         this.cId = cId;

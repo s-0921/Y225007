@@ -1,33 +1,33 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.mapper.RecordMapper" >
-  <resultMap id="BaseResultMap" type="cn.entity.Record" >
-    <constructor >
-      <idArg column="r_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="f_id" jdbcType="VARCHAR" javaType="java.lang.Integer" />
-      <arg column="c_id" jdbcType="VARCHAR" javaType="java.lang.Integer" />
-      <arg column="room_id" jdbcType="VARCHAR" javaType="java.lang.Integer" />
-      <arg column="starttime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
-      <arg column="endtime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
-      <arg column="total_num" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="sel_num" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="r_price" jdbcType="DOUBLE" javaType="java.lang.Double" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.mapper.RecordMapper">
+  <resultMap id="BaseResultMap" type="cn.entity.Record">
+    <constructor>
+      <idArg column="r_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="f_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="c_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="room_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="starttime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="endtime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="total_num" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="sel_num" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="r_price" javaType="java.lang.Double" jdbcType="DOUBLE" />
     </constructor>
   </resultMap>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     r_id, f_id, c_id, room_id, starttime, endtime, total_num, sel_num, r_price
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from t_record
     where r_id = #{rId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_record
     where r_id = #{rId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.entity.Record" >
+  <insert id="insert" parameterType="cn.entity.Record">
     insert into t_record (r_id, f_id, c_id, 
       room_id, starttime, endtime, 
       total_num, sel_num, r_price
@@ -37,98 +37,98 @@
       #{totalNum,jdbcType=INTEGER}, #{selNum,jdbcType=INTEGER}, #{rPrice,jdbcType=DOUBLE}
       )
   </insert>
-  <insert id="insertSelective" parameterType="cn.entity.Record" >
+  <insert id="insertSelective" parameterType="cn.entity.Record">
     insert into t_record
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="rId != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rId != null">
         r_id,
       </if>
-      <if test="fId != null" >
+      <if test="fId != null">
         f_id,
       </if>
-      <if test="cId != null" >
+      <if test="cId != null">
         c_id,
       </if>
-      <if test="roomId != null" >
+      <if test="roomId != null">
         room_id,
       </if>
-      <if test="starttime != null" >
+      <if test="starttime != null">
         starttime,
       </if>
-      <if test="endtime != null" >
+      <if test="endtime != null">
         endtime,
       </if>
-      <if test="totalNum != null" >
+      <if test="totalNum != null">
         total_num,
       </if>
-      <if test="selNum != null" >
+      <if test="selNum != null">
         sel_num,
       </if>
-      <if test="rPrice != null" >
+      <if test="rPrice != null">
         r_price,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="rId != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rId != null">
         #{rId,jdbcType=INTEGER},
       </if>
-      <if test="fId != null" >
+      <if test="fId != null">
         #{fId,jdbcType=VARCHAR},
       </if>
-      <if test="cId != null" >
+      <if test="cId != null">
         #{cId,jdbcType=VARCHAR},
       </if>
-      <if test="roomId != null" >
+      <if test="roomId != null">
         #{roomId,jdbcType=VARCHAR},
       </if>
-      <if test="starttime != null" >
+      <if test="starttime != null">
         #{starttime,jdbcType=TIMESTAMP},
       </if>
-      <if test="endtime != null" >
+      <if test="endtime != null">
         #{endtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="totalNum != null" >
+      <if test="totalNum != null">
         #{totalNum,jdbcType=INTEGER},
       </if>
-      <if test="selNum != null" >
+      <if test="selNum != null">
         #{selNum,jdbcType=INTEGER},
       </if>
-      <if test="rPrice != null" >
+      <if test="rPrice != null">
         #{rPrice,jdbcType=DOUBLE},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.entity.Record" >
+  <update id="updateByPrimaryKeySelective" parameterType="cn.entity.Record">
     update t_record
-    <set >
-      <if test="fId != null" >
+    <set>
+      <if test="fId != null">
         f_id = #{fId,jdbcType=VARCHAR},
       </if>
-      <if test="cId != null" >
+      <if test="cId != null">
         c_id = #{cId,jdbcType=VARCHAR},
       </if>
-      <if test="roomId != null" >
+      <if test="roomId != null">
         room_id = #{roomId,jdbcType=VARCHAR},
       </if>
-      <if test="starttime != null" >
+      <if test="starttime != null">
         starttime = #{starttime,jdbcType=TIMESTAMP},
       </if>
-      <if test="endtime != null" >
+      <if test="endtime != null">
         endtime = #{endtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="totalNum != null" >
+      <if test="totalNum != null">
         total_num = #{totalNum,jdbcType=INTEGER},
       </if>
-      <if test="selNum != null" >
+      <if test="selNum != null">
         sel_num = #{selNum,jdbcType=INTEGER},
       </if>
-      <if test="rPrice != null" >
+      <if test="rPrice != null">
         r_price = #{rPrice,jdbcType=DOUBLE},
       </if>
     </set>
     where r_id = #{rId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.entity.Record" >
+  <update id="updateByPrimaryKey" parameterType="cn.entity.Record">
     update t_record
     set f_id = #{fId,jdbcType=VARCHAR},
       c_id = #{cId,jdbcType=VARCHAR},

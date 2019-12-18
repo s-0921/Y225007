@@ -22,11 +22,13 @@
 
     <!-- 加载注解  -->
     <mvc:annotation-driven/>
-    <!-- 配置视图
-    <mvc:view-controller path="/login" view-name="login"/>
-    <mvc:view-controller path="/register" view-name="register"/>-->
+    <!-- 配置视图-->
+    <mvc:view-controller path="/loginUI" view-name="login"/>
+    <mvc:view-controller path="/registerUI" view-name="register"/>
+    <mvc:view-controller path="/main" view-name="main"/>
 
     <mvc:resources mapping="/js/**" location="/js/"/>
+    <mvc:resources mapping="/cn/**" location="/cn/controller"/>
     <mvc:default-servlet-handler/>
     <!-- 配置视图解析器,作用是配置目录前缀和文件后缀，然后解析为一个资源文件 -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
