@@ -13,10 +13,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.util.List;
 
 public class MovieTest {
-    @Autowired
+
     private UserService us;
-    @Test
+
+   @Test
     public void testUserSelect() throws Exception{
+
 
         ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
         us = ac.getBean(UserService.class);

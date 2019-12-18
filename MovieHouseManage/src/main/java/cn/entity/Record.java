@@ -8,11 +8,11 @@ import java.util.Date;
 public class Record {
     private Integer rId;//编号
 
-    private String fId;//电影
+    private Integer fId;//电影
 
-    private String cId;//影院
+    private Integer cId;//影院
 
-    private String roomId;//放映厅编号
+    private Integer roomId;//放映厅编号
 
     private Date starttime;//开始时间
 

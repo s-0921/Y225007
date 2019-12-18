@@ -1,8 +1,6 @@
 ﻿package cn.entity;
 
 import java.util.Date;
-
-<<<<<<< HEAD
 /*
 * 实体类：演职人员
 */

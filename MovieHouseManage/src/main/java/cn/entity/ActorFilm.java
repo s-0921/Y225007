@@ -7,9 +7,9 @@
 public class ActorFilm {
     private Integer id;//编号
 
-    private String aId;//演员编号
+    private Integer aId;//演员编号
 
-    private String fId;//电影编号
+    private Integer fId;//电影编号
 
     public ActorFilm(Integer id, Integer aId, Integer fId) {
         this.id = id;
