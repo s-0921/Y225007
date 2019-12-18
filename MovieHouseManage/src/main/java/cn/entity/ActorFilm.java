@@ -1,5 +1,4 @@
-﻿package cn.entity;
-
+package cn.entity;
 
 /**
  * 演员所参演电影Bean

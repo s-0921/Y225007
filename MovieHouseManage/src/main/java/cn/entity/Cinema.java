@@ -1,4 +1,4 @@
-﻿package cn.entity;
+package cn.entity;
 
 /**
  * 电影院Bean

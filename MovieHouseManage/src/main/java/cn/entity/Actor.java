@@ -1,9 +1,9 @@
-﻿package cn.entity;
+package cn.entity;
 
 import java.util.Date;
 /*
-* 实体类：演职人员
-*/
+ * 实体类：演职人员
+ */
 /**
  * 演员Bean
  */

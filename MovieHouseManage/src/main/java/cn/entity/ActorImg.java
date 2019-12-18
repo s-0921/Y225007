@@ -1,4 +1,4 @@
-﻿package cn.entity;
+package cn.entity;
 
 /**
  * 演员图片

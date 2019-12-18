@@ -1,4 +1,4 @@
-﻿package cn.entity;
+package cn.entity;
 
 /**
  * 实体类：地址类
