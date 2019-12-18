@@ -1,5 +1,6 @@
 package cn.controller;
 
+<<<<<<< HEAD
 import cn.utils.HttpClientUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +10,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import java.util.HashMap;
 import java.util.Map;
+=======
+import org.springframework.stereotype.Controller;
+>>>>>>> 9265f739a2d3e0e7b6b0bf17966dfde188e807c3
 
 @Controller
 @SessionAttributes(value = "num")
