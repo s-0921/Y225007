@@ -38,4 +38,7 @@ public interface FilmService {
 
     //查询好评榜（前10）
     public List<Film> queryByCount();
+
+    //根据动态条件（上映时间，电影类型，区域，年代）查询电影列表
+    public List<Film> queryByCondition();
 }

@@ -86,4 +86,13 @@ public class FilmServiceImpl implements FilmService {
     public List<Film> queryByCount() {
         return filmMapper.selectByCount();
     }
+
+    //根据动态条件（上映时间，电影类型，区域，年代）查询电影列表
+    @Override
+    public List<Film> queryByCondition() {
+        return filmMapper.selectByCondition();
+    }
+
+
+
 }

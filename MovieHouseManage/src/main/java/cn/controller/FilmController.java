@@ -2,10 +2,13 @@ package cn.controller;
 
 import cn.entity.Film;
 import cn.service.FilmService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -82,6 +85,24 @@ public class FilmController {
     public String boxScore(Model model){
         List<Film> upcomingFilmList = filmService.queryByCount();
         model.addAttribute("upcomingFilmList",upcomingFilmList);
+        return "";
+    }
+
+    /*
+     * 动态条件查询电影数据（分页查询）
+     */
+    @RequestMapping("/films")
+    public String getFilms(@RequestParam(value="pn",defaultValue="1")Integer pn, Model model){
+
+        //引入PageHelper分页插件
+        //查询之前需要调用,,传入页码，以及每页的大小
+        PageHelper.startPage(pn,5);
+        //startPage后面紧跟的是这个查询就是一个分页查询
+        List<Film> emps = filmService.queryByCondition();
+        //使用pageInfo包装查询后的结果，只需要将Pageinfo交给页面就行了
+        //封装了详细的分页信息，包括我们查出来的数据,传入连续显示的数据
+        PageInfo page = new PageInfo(emps,5);
+        model.addAttribute("pageInfo",page);
         return "";
     }
 }

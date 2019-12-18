@@ -276,16 +276,17 @@
             <if test="f_status = 2">
                 f_status=2
             </if>
-            <if test="null != f_type and ''!=f_type">
+            <if test="null != f_type and '全部'!=f_type">
                 and f_type=#{fType}
             </if>
-            <if test="null != f_country and ''!=f_country">
+            <if test="null != f_country and '全部'!=f_country">
                 and f_country=#{fCountry}
             </if>
-            <if test="">
-
+            <if test="datename(year,f_time) =#{time}">
+                and datename(year,f_time) = #{time}
             </if>
-
         </where>
+        order by
+            f_office
     </select>
 </mapper>
