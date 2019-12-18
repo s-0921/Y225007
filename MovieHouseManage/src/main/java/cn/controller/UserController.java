@@ -7,8 +7,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.*;
 @Controller
 @RequestMapping("/user")
@@ -46,6 +52,18 @@ public class UserController {
         }
         return false;
     }
+    @RequestMapping("/tellMsgCode")
+    @ResponseBody
+    public boolean tellMsgCode(String msg){
+        RequestAttributes ra = RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = ((ServletRequestAttributes)ra).getRequest();
+        Integer num = (Integer) request.getSession(true).getAttribute("num");
+        if(num.toString().equals(msg.trim())){
+            return true;
+        }
+        return false;
+    }
+
     @RequestMapping("/register")
     @ResponseBody
     public boolean register(User user){

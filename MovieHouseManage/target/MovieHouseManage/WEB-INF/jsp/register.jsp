@@ -14,6 +14,8 @@
     <script type="text/javascript">
         $(function () {
 
+            $("#msg").attr("disabled", true);
+            $("#msgBtn").attr("disabled", true);
             $("#phone").blur(function () {
                 var myreg=/^[1][3,4,5,7,8][0-9]{9}$/;
                 if(myreg.test($(this).val())){
@@ -26,9 +28,12 @@
                             if(respData == true){
                                 $("#magP").css("color","red");
                                 $("#magP").text("此账号已经注册过");
+
                             }else {
                                 $("#magP").css("color","green");
                                 $("#magP").text("账号可用");
+                                $("#msg").removeAttr("disabled");
+                                $("#msgBtn").removeAttr("disabled");
                             }
                         }
                     });
@@ -38,6 +43,29 @@
                 }
 
             })
+            
+            $("#msg").blur(function () {
+                if ($(this).val().trim() == ""){
+                    alert("请填写验证码")
+                    return;
+                }
+                $.ajax({
+                    url:"${pageContext.request.contextPath}/user/tellMsgCode",
+                    type: "POST",
+                    data: {"msg":$("#msg").val()},
+                    dataType: "json",
+                    success: function(respData){
+                        if(respData == true){
+                            alert("验证成功");
+
+                        }else {
+                           alert("验证码有误");
+                            $("#msg").val("");
+                        }
+                    }
+                })
+            })
+
 
             $("#pwd").blur(function () {
                 var pwd = $(this).val();
@@ -56,7 +84,7 @@
                 if (rePwd == pwd){
                     $("#magRePwd").css("color","green");
                     $("#magRePwd").text("完成");
-                    $("#btn").remove("disabled");
+                    $("#register").remove("disabled");
                 }else{
                     $("#magRePwd").css("color","red");
                     $("#magRePwd").text("两次密码输入不一致");
@@ -65,6 +93,11 @@
 
 
             $("#register").click(function () {
+                if ($("#phone").val().trim() == ""||$("#pwd").val().trim() == ""||$("#rePwd").val().trim() == ""||$("#msg").val().trim() == ""){
+                    alert("请填写完信息")
+                    return;
+                }
+
                 $.ajax({
                     url:"${pageContext.request.contextPath}/user/register",
                     type: "POST",
@@ -80,13 +113,13 @@
                 });
             })
 
-/*
-            function yunpiancode() {
+
+            $("#msgBtn").click(function() {
 
                 var phone=$("#phone").val();
                 console.log(phone);
                 time=5;
-                var btn = $("#getcode");
+                var btn = $("#msgBtn");
                 btn.attr("disabled", true);  //按钮禁止点击
                 btn.val(time <= 0 ? "获取验证码" : ("" + (time) + "秒后可发送"));
                 var hander = setInterval(function() {
@@ -101,19 +134,16 @@
                 }, 1000);
 
                 $.ajax({
-                    url:"./getcode",
+                    url:"${pageContext.request.contextPath}/msgUP",
                     type:"post",
-                    data:JSON.stringify({detail:phone,msg:"已发送验证码"}),
-                    contentType:"application/json;charset=UTF-8",
+                    data:{"phone":$("#phone").val()},
                     dataType:"json",
                     success:function (data) {
-                        if(data!=null){
-                            console.log(data.msg);
-                        }
+                        alert(data);
                     }
 
                 })
-            }*/
+            })
         })
     </script>
 </head>
@@ -128,6 +158,11 @@
                 <td id="magP"></td>
             </tr>
             <tr>
+                <td>短信验证码：</td>
+                <td><input type="text" name="msg" id="msg" maxlength="6"></td>
+                <td><input type="button" value="获取验证码" id="msgBtn" /></td>
+            </tr>
+            <tr>
                 <td>密码：</td>
                 <td><input type="password" name="uPwd" id="pwd" /></td>
                 <td id="magPwd"></td>
@@ -137,13 +172,9 @@
                 <td><input type="password" name="rePwd" id="rePwd" /></td>
                 <td id="magRePwd"></td>
             </tr>
-           <!-- <tr>
-                <td>短信验证码：</td>
-                <td><input type="text" name="msgcode" oninput = "value=value.replace(/[^\d]/g,'')" maxlength="4"></td>
-                <td><input type="button" value="获取验证码" onclick="yunpiancode()" id="getcode" name="getcode"></td>
-            </tr>-->
+
             <tr>
-                <td><input type="button" id="register" disabled="disabled" value="注册" /></td>
+                <td><input type="button" id="register" value="注册" /></td>
                 <td><input type="button" id="cancel" value="取消" /></td>
             </tr>
         </table>
