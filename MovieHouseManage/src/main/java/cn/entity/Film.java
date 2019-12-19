@@ -1,6 +1,7 @@
 package cn.entity;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 实体类：电影
@@ -32,21 +33,25 @@ public class Film {
 
     private Integer fStatus;//电影状态
 
-    public Film(Integer fId, String fName, String fType, String fCountry, Date fTime, Integer fDuration, String fPritureUrl, String fIntro, String fLanguage, Double fOffice, Double fScore, Double fExpectationValue) {
-        this.fId = fId;
-        this.fName = fName;
-        this.fType = fType;
-        this.fCountry = fCountry;
-        this.fTime = fTime;
-        this.fDuration = fDuration;
-        this.fPritureUrl = fPritureUrl;
-        this.fIntro = fIntro;
-        this.fLanguage = fLanguage;
-        this.fOffice = fOffice;
-        this.fScore = fScore;
-        this.fExpectationValue = fExpectationValue;
-        this.fStatus = fStatus;
-    }
+
+    private List<FilmImg> filmImgs;//图集
+    private List<Actor> actors;//演员
+
+//    public Film(Integer fId, String fName, String fType, String fCountry, Date fTime, Integer fDuration, String fPritureUrl, String fIntro, String fLanguage, Double fOffice, Double fScore, Double fExpectationValue) {
+//        this.fId = fId;
+//        this.fName = fName;
+//        this.fType = fType;
+//        this.fCountry = fCountry;
+//        this.fTime = fTime;
+//        this.fDuration = fDuration;
+//        this.fPritureUrl = fPritureUrl;
+//        this.fIntro = fIntro;
+//        this.fLanguage = fLanguage;
+//        this.fOffice = fOffice;
+//        this.fScore = fScore;
+//        this.fExpectationValue = fExpectationValue;
+//        this.fStatus = fStatus;
+//    }
 
     public Film() {
         super();
@@ -154,5 +159,21 @@ public class Film {
 
     public void setfStatus(Integer fStatus) {
         this.fStatus = fStatus;
+    }
+
+    public List<FilmImg> getFilmImgs() {
+        return filmImgs;
+    }
+
+    public void setFilmImgs(List<FilmImg> filmImgs) {
+        this.filmImgs = filmImgs;
+    }
+
+    public List<Actor> getActors() {
+        return actors;
+    }
+
+    public void setActors(List<Actor> actors) {
+        this.actors = actors;
     }
 }
