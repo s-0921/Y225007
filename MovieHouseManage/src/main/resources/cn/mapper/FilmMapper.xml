@@ -286,4 +286,16 @@
         order by
             f_office
     </select>
+
+    <select id="selectByFId">
+        SELECT *
+        FROM
+            t_actorfilm AS af,
+            t_film AS f,
+            t_filmimg fi
+        WHERE
+            af.`f_id`=f.`f_id`
+            AND fi.`f_id`=f.`f_id`
+            AND f.`f_id`=#{fId}
+    </select>
 </mapper>
