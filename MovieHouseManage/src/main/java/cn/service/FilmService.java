@@ -1,6 +1,7 @@
 package cn.service;
 
 import cn.entity.Film;
+import cn.entity.FilmImg;
 
 import java.util.List;
 
@@ -41,4 +42,8 @@ public interface FilmService {
 
     //根据动态条件（上映时间，电影类型，区域，年代）查询电影列表
     public List<Film> queryByCondition();
+
+    //根据id查询电影所有信息（图集，演员。。。）
+    public List<Film> queryByFId(Integer fId);
+
 }
