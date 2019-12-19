@@ -39,4 +39,17 @@
       </if>
     </trim>
   </insert>
+
+
+    <select id="selectByFilmId" parameterType="cn.entity.FilmImg">
+        select *
+        from t_filmimg
+        where f_id=#{fId}
+    </select>
+
+    <delete id="deleteById" parameterType="cn.entity.FilmImg">
+        delete
+        from t_filmimg
+        where id=#{id}
+    </delete>
 </mapper>
