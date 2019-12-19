@@ -1,12 +1,12 @@
 package cn.service.impl;
 
 import cn.entity.Film;
+import cn.entity.FilmImg;
 import cn.mapper.FilmMapper;
 import cn.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -19,6 +19,7 @@ public class FilmServiceImpl implements FilmService {
     public int removeByPrimaryKey(Integer fId) {
         return filmMapper.deleteByPrimaryKey(fId);
     }
+
 
     @Override
     public int add(Film record) {
@@ -93,6 +94,11 @@ public class FilmServiceImpl implements FilmService {
         return filmMapper.selectByCondition();
     }
 
+    //查询电影所有信息（图集，演员。。。）
+    @Override
+    public List<Film> queryByFId(Integer fId) {
+        return filmMapper.selectByFId(fId);
+    }
 
 
 }
