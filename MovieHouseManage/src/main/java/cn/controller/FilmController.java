@@ -23,6 +23,17 @@ public class FilmController {
     @Autowired
     private FilmService filmService;
 
+    //查看一部电影的详细信息（图集，演员。。。）
+    @RequestMapping("/filmInfo")
+    public String filmInfo(Model model,Integer fId){
+
+        Film film=filmService.queryByPrimaryKey(fId);
+        model.addAttribute(film);
+        return "";
+    }
+
+
+
     //所有电影列表
     @RequestMapping("/allFilm")
     public void allFilm(Model model){
@@ -33,9 +44,6 @@ public class FilmController {
         Map<String,Object> map=new HashMap<String, Object>();
 
         map.put("allFilm",allFilm);
-
-
-
     }
 
     //正在上映电影列表
