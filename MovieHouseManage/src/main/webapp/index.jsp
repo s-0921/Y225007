@@ -17,6 +17,10 @@
     <title>Title</title>
 </head>
 <body>
+<<<<<<< HEAD
 <jsp:forward page="/test"></jsp:forward>
+=======
+<jsp:forward page="WEB-INF/jsp/AddFilm.jsp"></jsp:forward>
+>>>>>>> 5d6f94762aae563a8b26af688b61dbb77b266d00
 </body>
 </html>

@@ -10,6 +10,7 @@ public class ActorImg {
 
     private Integer aId;//演员编号
 
+
     public ActorImg(Integer id, String aImgUrl, Integer aId) {
         this.id = id;
         this.aImgUrl = aImgUrl;

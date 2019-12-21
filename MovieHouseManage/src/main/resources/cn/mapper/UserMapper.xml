@@ -1,126 +1,112 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.mapper.UserMapper">
-  <resultMap id="BaseResultMap" type="cn.entity.User">
-
-    <constructor>
-      <idArg column="u_idu_" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="u_name" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="u_pwd" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="u_sex" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="birthday" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-      <arg column="animation" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="u_phone" javaType="java.lang.String" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="cn.entity.User" >
+    <constructor >
+      <idArg column="u_idu_" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="u_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="u_pwd" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="u_sex" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="brithday" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="animation" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="u_phone" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
-  <sql id="Base_Column_List">
-    u_idu_, u_name, u_pwd, u_sex, birthday, animation, u_phone
+  <sql id="Base_Column_List" >
+    u_idu_, u_name, u_pwd, u_sex, brithday, animation, u_phone
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from t_user
     where u_idu_ = #{uIdu,jdbcType=INTEGER}
   </select>
-
-  <select id="selectByPhone" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from t_user
-    where u_phone = #{uPhone,jdbcType=VARCHAR}
-  </select>
-  <select id="selectAll" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from t_user
-  </select>
-
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from t_user
     where u_idu_ = #{uIdu,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.entity.User">
+  <insert id="insert" parameterType="cn.entity.User" >
     insert into t_user (u_idu_, u_name, u_pwd, 
-      u_sex, birthday, animation,
+      u_sex, brithday, animation, 
       u_phone)
     values (#{uIdu,jdbcType=INTEGER}, #{uName,jdbcType=VARCHAR}, #{uPwd,jdbcType=VARCHAR}, 
-      #{uSex,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP}, #{animation,jdbcType=VARCHAR},
+      #{uSex,jdbcType=VARCHAR}, #{brithday,jdbcType=TIMESTAMP}, #{animation,jdbcType=VARCHAR}, 
       #{uPhone,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="cn.entity.User">
+  <insert id="insertSelective" parameterType="cn.entity.User" >
     insert into t_user
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="uIdu != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uIdu != null" >
         u_idu_,
       </if>
-      <if test="uName != null">
+      <if test="uName != null" >
         u_name,
       </if>
-      <if test="uPwd != null">
+      <if test="uPwd != null" >
         u_pwd,
       </if>
-      <if test="uSex != null">
+      <if test="uSex != null" >
         u_sex,
       </if>
-      <if test="birthday != null">
-        birthday,
+      <if test="brithday != null" >
+        brithday,
       </if>
-      <if test="animation != null">
+      <if test="animation != null" >
         animation,
       </if>
-      <if test="uPhone != null">
+      <if test="uPhone != null" >
         u_phone,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="uIdu != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uIdu != null" >
         #{uIdu,jdbcType=INTEGER},
       </if>
-      <if test="uName != null">
+      <if test="uName != null" >
         #{uName,jdbcType=VARCHAR},
       </if>
-      <if test="uPwd != null">
+      <if test="uPwd != null" >
         #{uPwd,jdbcType=VARCHAR},
       </if>
-      <if test="uSex != null">
+      <if test="uSex != null" >
         #{uSex,jdbcType=VARCHAR},
       </if>
-      <if test="birthday != null">
-        #{birthday,jdbcType=TIMESTAMP},
+      <if test="brithday != null" >
+        #{brithday,jdbcType=TIMESTAMP},
       </if>
-      <if test="animation != null">
+      <if test="animation != null" >
         #{animation,jdbcType=VARCHAR},
       </if>
-      <if test="uPhone != null">
+      <if test="uPhone != null" >
         #{uPhone,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.entity.User">
+  <update id="updateByPrimaryKeySelective" parameterType="cn.entity.User" >
     update t_user
-    <set>
-      <if test="uName != null">
+    <set >
+      <if test="uName != null" >
         u_name = #{uName,jdbcType=VARCHAR},
       </if>
-      <if test="uPwd != null">
+      <if test="uPwd != null" >
         u_pwd = #{uPwd,jdbcType=VARCHAR},
       </if>
-      <if test="uSex != null">
+      <if test="uSex != null" >
         u_sex = #{uSex,jdbcType=VARCHAR},
       </if>
-      <if test="brithday != null">
+      <if test="brithday != null" >
         brithday = #{brithday,jdbcType=TIMESTAMP},
       </if>
-      <if test="animation != null">
+      <if test="animation != null" >
         animation = #{animation,jdbcType=VARCHAR},
       </if>
-      <if test="uPhone != null">
+      <if test="uPhone != null" >
         u_phone = #{uPhone,jdbcType=VARCHAR},
       </if>
     </set>
     where u_idu_ = #{uIdu,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.entity.User">
+  <update id="updateByPrimaryKey" parameterType="cn.entity.User" >
     update t_user
     set u_name = #{uName,jdbcType=VARCHAR},
       u_pwd = #{uPwd,jdbcType=VARCHAR},
@@ -130,5 +116,4 @@
       u_phone = #{uPhone,jdbcType=VARCHAR}
     where u_idu_ = #{uIdu,jdbcType=INTEGER}
   </update>
-
 </mapper>

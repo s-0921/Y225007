@@ -3,15 +3,15 @@ package cn.mapper;
 import cn.entity.Address;
 
 public interface AddressMapper {
-    int deleteByPrimaryKey(Integer aId);
+    public int deleteByPrimaryKey(Integer aId);
 
-    int insert(Address record);
+    public int insert(Address record);
 
-    int insertSelective(Address record);
+    public int insertSelective(Address record);
 
-    Address selectByPrimaryKey(Integer aId);
+    public Address selectByPrimaryKey(Integer aId);
 
-    int updateByPrimaryKeySelective(Address record);
+    public int updateByPrimaryKeySelective(Address record);
 
-    int updateByPrimaryKey(Address record);
+    public int updateByPrimaryKey(Address record);
 }

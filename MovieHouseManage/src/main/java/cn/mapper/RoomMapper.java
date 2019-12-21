@@ -3,15 +3,15 @@ package cn.mapper;
 import cn.entity.Room;
 
 public interface RoomMapper {
-    int deleteByPrimaryKey(Integer roomId);
+    public int deleteByPrimaryKey(Integer roomId);
 
-    int insert(Room record);
+    public int insert(Room record);
 
-    int insertSelective(Room record);
+    public int insertSelective(Room record);
 
-    Room selectByPrimaryKey(Integer roomId);
+    public Room selectByPrimaryKey(Integer roomId);
 
-    int updateByPrimaryKeySelective(Room record);
+    public int updateByPrimaryKeySelective(Room record);
 
-    int updateByPrimaryKey(Room record);
+    public int updateByPrimaryKey(Room record);
 }

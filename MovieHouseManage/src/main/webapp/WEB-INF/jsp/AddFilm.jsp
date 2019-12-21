@@ -55,7 +55,7 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">相看量</label>
+            <label class="layui-form-label">想看量</label>
             <div class="layui-input-block">
                 <input type="text" name="title" required  lay-verify="required" placeholder="请输入想看量" autocomplete="off" class="layui-input">
             </div>

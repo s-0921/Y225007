@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.mapper.FilmMapper" >
   <resultMap id="BaseResultMap" type="cn.entity.Film" >
@@ -176,4 +176,114 @@
       f_expectation_value = #{fExpectationValue,jdbcType=DOUBLE}
     where f_id = #{fId,jdbcType=INTEGER}
   </update>
+    
+    <!-- 所有电影 -->
+    <select id="selectAllFilm" parameterType="cn.entity.Film">
+        select * from t_film;
+    </select>
+    
+    <!--当前时间<上映时间      即将上映-->
+    <select id="selectByLessTime" parameterType="cn.entity.Film">
+        select
+            <include refid="Base_Column_List" />
+        from
+            t_film
+        where
+            f_status=1
+    </select>
+
+
+    <!--当前时间>上映时间且 前两个月内      正在上映-->
+    <select id="selectByGreaterTime" parameterType="cn.entity.Film">
+
+        select
+            <include refid="Base_Column_List" />
+        from
+            t_film
+        where
+            f_status=0
+    </select>
+
+    <!-- 查询票房榜（前10）-->
+    <select id="selectByOffice" parameterType="cn.entity.Film">
+        select
+        <include refid="Base_Columu_List"/>
+        from
+            t_film
+        where
+            f_status=0
+        order by
+            f_office
+        desc
+        limit 10
+
+    </select>
+
+    <!-- 查询期待榜（前50）-->
+    <select id="selectByExpectation" parameterType="cn.entity.Film">
+        select
+            <include refid="Base_Columu_List"/>
+        from
+            t_film
+        order by
+            f_expectation_value
+        desc
+        limit 50
+    </select>
+
+    <!-- 查询 top100（所有电影票房前100）-->
+    <select id="selectByTOP" parameterType="cn.entity.Film">
+        select
+         <include refid="Base_Columu_List"/>
+        from
+            t_film
+        order by
+            f_office
+        desc
+        limit 100
+    </select>
+
+    <!-- 查询好评榜（前10）-->
+    <select id="selectByCount" parameterType="cn.entity.Film">
+        select
+            <include refid="Base_Columu_List"/>
+        from
+            t_film
+        where
+            f_status=0
+        order by
+            f_score
+        desc
+        limit 10
+    </select>
+
+    <!-- 根据动态条件（上映时间，电影类型，区域，年代）查询电影列表  -->
+    <select id="selectByCondition" parameterType="cn.entity.Film">
+        select
+            <include refid="Base_Columu_List"/>
+        from
+            t_film
+        <where>
+            <if test="f_status = 0">
+                f_status=0
+            </if>
+            <if test="f_status = 1">
+                f_status=1
+            </if>
+            <if test="f_status = 2">
+                f_status=2
+            </if>
+            <if test="null != f_type and '全部'!=f_type">
+                and f_type=#{fType}
+            </if>
+            <if test="null != f_country and '全部'!=f_country">
+                and f_country=#{fCountry}
+            </if>
+            <if test="datename(year,f_time) =#{time}">
+                and datename(year,f_time) = #{time}
+            </if>
+        </where>
+        order by
+            f_office
+    </select>
 </mapper>

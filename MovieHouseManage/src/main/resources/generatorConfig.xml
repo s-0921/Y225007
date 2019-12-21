@@ -64,6 +64,26 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
+<<<<<<< HEAD
+=======
+        <table tableName="t_actorimg" domainObjectName="ActorImg"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+
+        <table tableName="t_Actor" domainObjectName="Actor"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+
+        <table tableName="t_actorfilm" domainObjectName="ActorFilm"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+>>>>>>> 5d6f94762aae563a8b26af688b61dbb77b266d00
 
 
         <table tableName="ticket" domainObjectName="Order"

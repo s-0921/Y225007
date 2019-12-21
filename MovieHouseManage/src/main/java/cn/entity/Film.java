@@ -3,7 +3,7 @@ package cn.entity;
 import java.util.Date;
 
 /**
- * 电影信息Bean
+ * 实体类：电影
  */
 public class Film {
     private Integer fId;//编号
@@ -28,7 +28,9 @@ public class Film {
 
     private Double fScore;//评分
 
-    private Double fExpectationValue;//想看量
+    private Double fExpectationValue;//期待值
+
+    private Integer fStatus;//电影状态
 
     public Film(Integer fId, String fName, String fType, String fCountry, Date fTime, Integer fDuration, String fPritureUrl, String fIntro, String fLanguage, Double fOffice, Double fScore, Double fExpectationValue) {
         this.fId = fId;
@@ -43,6 +45,7 @@ public class Film {
         this.fOffice = fOffice;
         this.fScore = fScore;
         this.fExpectationValue = fExpectationValue;
+        this.fStatus = fStatus;
     }
 
     public Film() {
@@ -143,5 +146,13 @@ public class Film {
 
     public void setfExpectationValue(Double fExpectationValue) {
         this.fExpectationValue = fExpectationValue;
+    }
+
+    public Integer getfStatus() {
+        return fStatus;
+    }
+
+    public void setfStatus(Integer fStatus) {
+        this.fStatus = fStatus;
     }
 }

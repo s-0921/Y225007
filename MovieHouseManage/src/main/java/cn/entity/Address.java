@@ -1,7 +1,7 @@
 package cn.entity;
 
 /**
- * 地域Bean
+ * 实体类：地址类
  */
 public class Address {
     private Integer aId;//编号

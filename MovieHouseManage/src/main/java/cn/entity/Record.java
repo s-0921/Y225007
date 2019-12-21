@@ -8,11 +8,11 @@ import java.util.Date;
 public class Record {
     private Integer rId;//编号
 
-    private String fId;//电影
+    private Integer fId;//电影
 
-    private String cId;//影院
+    private Integer cId;//影院
 
-    private String roomId;//放映厅编号
+    private Integer roomId;//放映厅编号
 
     private Date starttime;//开始时间
 
@@ -24,7 +24,7 @@ public class Record {
 
     private Double rPrice;//播放厅累计收入
 
-    public Record(Integer rId, String fId, String cId, String roomId, Date starttime, Date endtime, Integer totalNum, Integer selNum, Double rPrice) {
+    public Record(Integer rId, Integer fId, Integer cId, Integer roomId, Date starttime, Date endtime, Integer totalNum, Integer selNum, Double rPrice) {
         this.rId = rId;
         this.fId = fId;
         this.cId = cId;
@@ -48,28 +48,26 @@ public class Record {
         this.rId = rId;
     }
 
-    public String getfId() {
+    public Integer getfId() {
         return fId;
     }
 
-    public void setfId(String fId) {
-        this.fId = fId == null ? null : fId.trim();
-    }
+    public void setfId(Integer fId) { this.fId = fId == null ? null : fId; }
 
-    public String getcId() {
+    public Integer getcId() {
         return cId;
     }
 
-    public void setcId(String cId) {
-        this.cId = cId == null ? null : cId.trim();
+    public void setcId(Integer cId) {
+        this.cId = cId == null ? null : cId;
     }
 
-    public String getRoomId() {
+    public Integer getRoomId() {
         return roomId;
     }
 
-    public void setRoomId(String roomId) {
-        this.roomId = roomId == null ? null : roomId.trim();
+    public void setRoomId(Integer roomId) {
+        this.roomId = roomId == null ? null : roomId;
     }
 
     public Date getStarttime() {
