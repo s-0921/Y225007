@@ -20,7 +20,7 @@
     <mvc:view-controller path="/mainUI" view-name="FilmMain"/>
     <mvc:view-controller path="/registerUI" view-name="register"/>
     <mvc:view-controller path="/file" view-name="FilmBackstage"/>
-    <mvc:view-controller path="/seat" view-name="SeatNumber"/>
+    <mvc:view-controller path="/test" view-name="test"/>
 
     <mvc:resources mapping="/js/**" location="/js/"/>
     <mvc:resources mapping="/cn/**" location="/cn/controller"/>

@@ -1,30 +1,32 @@
 package cn.entity;
 
 import java.util.Date;
+import java.util.List;
 
-/**
- * 订单Bean
- */
 public class Order {
-    private Integer oId;//编号
+    private Integer oId;
 
-    private Integer uId;//用户编号
+    private Integer uId;
 
-    private Integer rId;//播放记录
+    private Integer rId;
 
-    private Integer seatNum;//座位数量
+    private Integer seatNum;
 
-    private String seatInfo;//座位信息
+    private String seatInfo;
 
-    private Double money;//金额
+    private Double money;
 
-    private Integer status;//状态
+    private Integer status;
 
-    private Date addTime;//购买时间
+    private Date addTime;
 
-    private Integer oPhone;//取票手机号
+    private String oPhone;
 
-    public Order(Integer oId, Integer uId, Integer rId, Integer seatNum, String seatInfo, Double money, Integer status, Date addTime, Integer oPhone) {
+    private String ordernum;
+
+    private List<Ticket> tickets;
+
+    public Order(Integer oId, Integer uId, Integer rId, Integer seatNum, String seatInfo, Double money, Integer status, Date addTime, String oPhone, String ordernum) {
         this.oId = oId;
         this.uId = uId;
         this.rId = rId;
@@ -34,10 +36,38 @@ public class Order {
         this.status = status;
         this.addTime = addTime;
         this.oPhone = oPhone;
+        this.ordernum = ordernum;
+    }
+
+    public Order(Integer uId, Integer rId, Integer seatNum, String seatInfo, Double money, Integer status, Date addTime, String oPhone, String ordernum, List<Ticket> tickets) {
+        this.uId = uId;
+        this.rId = rId;
+        this.seatNum = seatNum;
+        this.seatInfo = seatInfo;
+        this.money = money;
+        this.status = status;
+        this.addTime = addTime;
+        this.oPhone = oPhone;
+        this.ordernum = ordernum;
+        this.tickets = tickets;
+    }
+
+    public Order(Integer oId, Integer uId, Integer rId, Integer seatNum, String seatInfo, Double money, Integer status, Date addTime, String oPhone, String ordernum, List<Ticket> tickets) {
+        this.oId = oId;
+        this.uId = uId;
+        this.rId = rId;
+        this.seatNum = seatNum;
+        this.seatInfo = seatInfo;
+        this.money = money;
+        this.status = status;
+        this.addTime = addTime;
+        this.oPhone = oPhone;
+        this.ordernum = ordernum;
+        this.tickets = tickets;
     }
 
     public Order() {
-        super();
+
     }
 
     public Integer getoId() {
@@ -104,11 +134,27 @@ public class Order {
         this.addTime = addTime;
     }
 
-    public Integer getoPhone() {
+    public String getoPhone() {
         return oPhone;
     }
 
-    public void setoPhone(Integer oPhone) {
+    public void setoPhone(String oPhone) {
         this.oPhone = oPhone;
+    }
+
+    public String getOrdernum() {
+        return ordernum;
+    }
+
+    public void setOrdernum(String ordernum) {
+        this.ordernum = ordernum == null ? null : ordernum.trim();
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
     }
 }

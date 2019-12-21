@@ -17,6 +17,6 @@
     <title>Title</title>
 </head>
 <body>
-<jsp:forward page="/file"></jsp:forward>
+<jsp:forward page="/test"></jsp:forward>
 </body>
 </html>
