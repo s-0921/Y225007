@@ -12,11 +12,21 @@
       <arg column="status" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="add_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <arg column="o_phone" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="orderNum" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
+    <collection property="List" select="cn.mapper.TicketMapper.selectByOrderNum" column="orderNum"></collection>
   </resultMap>
   <sql id="Base_Column_List">
-    o_id, u_id, r_id, seat_num, seat_info, money, status, add_time, o_phone
+    o_id, u_id, r_id, seat_num, seat_info, money, status, add_time, o_phone, orderNum
   </sql>
+
+  <select id="selectByOrderNum" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_order
+    where orderNum = #{orderNum,jdbcType=VARCHAR}
+  </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -30,12 +40,12 @@
   <insert id="insert" parameterType="cn.entity.Order">
     insert into t_order (o_id, u_id, r_id, 
       seat_num, seat_info, money, 
-      status, add_time, o_phone
-      )
+      status, add_time, o_phone, 
+      orderNum)
     values (#{oId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER}, #{rId,jdbcType=INTEGER}, 
       #{seatNum,jdbcType=INTEGER}, #{seatInfo,jdbcType=VARCHAR}, #{money,jdbcType=DOUBLE}, 
-      #{status,jdbcType=INTEGER}, #{addTime,jdbcType=TIMESTAMP}, #{oPhone,jdbcType=INTEGER}
-      )
+      #{status,jdbcType=INTEGER}, #{addTime,jdbcType=TIMESTAMP}, #{oPhone,jdbcType=INTEGER}, 
+      #{ordernum,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.entity.Order">
     insert into t_order
@@ -67,6 +77,9 @@
       <if test="oPhone != null">
         o_phone,
       </if>
+      <if test="ordernum != null">
+        orderNum,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="oId != null">
@@ -95,6 +108,9 @@
       </if>
       <if test="oPhone != null">
         #{oPhone,jdbcType=INTEGER},
+      </if>
+      <if test="ordernum != null">
+        #{ordernum,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -125,6 +141,9 @@
       <if test="oPhone != null">
         o_phone = #{oPhone,jdbcType=INTEGER},
       </if>
+      <if test="ordernum != null">
+        orderNum = #{ordernum,jdbcType=VARCHAR},
+      </if>
     </set>
     where o_id = #{oId,jdbcType=INTEGER}
   </update>
@@ -137,7 +156,9 @@
       money = #{money,jdbcType=DOUBLE},
       status = #{status,jdbcType=INTEGER},
       add_time = #{addTime,jdbcType=TIMESTAMP},
-      o_phone = #{oPhone,jdbcType=INTEGER}
+      o_phone = #{oPhone,jdbcType=INTEGER},
+      orderNum = #{ordernum,jdbcType=VARCHAR}
     where o_id = #{oId,jdbcType=INTEGER}
   </update>
+
 </mapper>

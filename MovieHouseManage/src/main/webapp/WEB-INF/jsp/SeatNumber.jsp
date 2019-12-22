@@ -9,14 +9,6 @@
 <html>
 <head>
     <title>电影选择座位</title>
-    <link rel="dns-prefetch" href="//p0.meituan.net"  />
-    <link rel="dns-prefetch" href="//p1.meituan.net"  />
-    <link rel="dns-prefetch" href="//ms0.meituan.net" />
-    <link rel="dns-prefetch" href="//s0.meituan.net" />
-    <link rel="dns-prefetch" href="//ms1.meituan.net" />
-    <link rel="dns-prefetch" href="//analytics.meituan.com" />
-    <link rel="dns-prefetch" href="//report.meituan.com" />
-    <link rel="dns-prefetch" href="//frep.meituan.com" />
 
 
     <meta charset="utf-8">
@@ -43,8 +35,8 @@
         window.$mtsiFlag = '0';
 
     </script>
-    <link rel="stylesheet" href="//s3plus.meituan.net/v1/mss_e2821d7f0cfe4ac1bf9202ecf9590e67/cdn-prod/file:5788b470/common.0a548310.css"/>
-    <link rel="stylesheet" href="//s3plus.meituan.net/v1/mss_e2821d7f0cfe4ac1bf9202ecf9590e67/cdn-prod/file:5788b470/cinemas-seat.b8adee6e.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/countSum.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/countSum2.css"/>
     <script crossorigin="anonymous" src="//s3plus.meituan.net/v1/mss_e2821d7f0cfe4ac1bf9202ecf9590e67/cdn-prod/file:5788b470/stat.88d57c80.js"></script>
     <script>if(window.devicePixelRatio >= 2) { document.write('<link rel="stylesheet" href="//s3plus.meituan.net/v1/mss_e2821d7f0cfe4ac1bf9202ecf9590e67/cdn-prod/file:5788b470/image-2x.8ba7074d.css"/>') }</script>
     <style>
@@ -1436,15 +1428,6 @@
             </div>
         </div>
     </div>
-    <div class="modal-container" style="display:none">
-        <div class="modal">
-            <span class="icon"></span>
-
-            <p class="tip">为了增加您的观影感受，影厅部分座椅加装了按摩坐垫，如有不适，请与工作人员联系～</p>
-
-            <div class="ok-btn btn">我知道了</div>
-        </div>
-    </div>
 
     <script src="https://s0.meituan.net/bs/mt-login-component/v1.0.12/index.min.js"></script>
 </div>
@@ -1520,9 +1503,9 @@
         devMode: false
     })
 </script>
-<!--[if IE 8]><script crossorigin="anonymous" src="//s3plus.meituan.net/v1/mss_e2821d7f0cfe4ac1bf9202ecf9590e67/cdn-prod/file:5788b470/es5-shim.bbad933f.js"></script><![endif]-->
-<!--[if IE 8]><script crossorigin="anonymous" src="//s3plus.meituan.net/v1/mss_e2821d7f0cfe4ac1bf9202ecf9590e67/cdn-prod/file:5788b470/es5-sham.d6ea26f4.js"></script><![endif]-->
-<script crossorigin="anonymous" src="//s3plus.meituan.net/v1/mss_e2821d7f0cfe4ac1bf9202ecf9590e67/cdn-prod/file:5788b470/common.9d00a28e.js"></script>
-<script crossorigin="anonymous" src="//s3plus.meituan.net/v1/mss_e2821d7f0cfe4ac1bf9202ecf9590e67/cdn-prod/file:5788b470/cinemas-seat.ff61c305.js"></script>
+<!--<script crossorigin="anonymous" src="//s3plus.meituan.net/v1/mss_e2821d7f0cfe4ac1bf9202ecf9590e67/cdn-prod/file:5788b470/es5-shim.bbad933f.js"></script>-->
+<!--<script crossorigin="anonymous" src="//s3plus.meituan.net/v1/mss_e2821d7f0cfe4ac1bf9202ecf9590e67/cdn-prod/file:5788b470/es5-sham.d6ea26f4.js"></script>-->
+<script crossorigin="anonymous" src="${pageContext.request.contextPath}/js/seatNumber/xuanzuo.js"></script>
+<script crossorigin="anonymous" src="${pageContext.request.contextPath}/js/seatNumber/xuanzuo2.js"></script>
 </body>
 </html>

@@ -1,215 +1,226 @@
 /*
-SQLyog Ultimate v12.08 (64 bit)
-MySQL - 5.5.48 : Database - movie
-*********************************************************************
-*/
+ Navicat Premium Data Transfer
 
-/*!40101 SET NAMES utf8 */;
+ Source Server         : fan
+ Source Server Type    : MySQL
+ Source Server Version : 50548
+ Source Host           : localhost:3306
+ Source Schema         : movie
 
-/*!40101 SET SQL_MODE=''*/;
+ Target Server Type    : MySQL
+ Target Server Version : 50548
+ File Encoding         : 65001
 
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`movie` /*!40100 DEFAULT CHARACTER SET utf8 */;
+ Date: 21/12/2019 20:50:45
+*/
 
-USE `movie`;
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
 
-/*Table structure for table ` t_user` */
-
-DROP TABLE IF EXISTS ` t_user`;
-
-CREATE TABLE ` t_user` (
-  `u_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户id',
-  `u_name` varchar(255) DEFAULT NULL COMMENT '用户昵称',
-  `u_pwd` varchar(255) NOT NULL COMMENT '用户密码',
-  `u_sex` varchar(255) DEFAULT NULL COMMENT '性别',
-  `brithday` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '生日',
-  `animation` varchar(255) DEFAULT NULL COMMENT '生活状态',
-  `u_phone` varchar(255) NOT NULL COMMENT '手机号',
-  PRIMARY KEY (`u_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
-
-/*Data for the table ` t_user` */
-
-/*Table structure for table `t_actor` */
-
+-- ----------------------------
+-- Table structure for t_actor
+-- ----------------------------
 DROP TABLE IF EXISTS `t_actor`;
+CREATE TABLE `t_actor`  (
+  `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '演员id',
+  `actorName` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '演员名',
+  `actorSex` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '演员性别',
+  `address` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '演员地区',
+  `born` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '演员出生日期',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
-CREATE TABLE `t_actor` (
-  `a_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '演员id',
-  `a_name` varchar(255) DEFAULT NULL COMMENT '演员名',
-  `a_sex` varchar(255) DEFAULT NULL COMMENT '演员性别',
-  `a_address` varchar(255) DEFAULT NULL COMMENT '演员地区',
-  `a_birthday` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '演员出生日期',
-  PRIMARY KEY (`a_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
-
-/*Data for the table `t_actor` */
-
-/*Table structure for table `t_actorfilm` */
-
+-- ----------------------------
+-- Table structure for t_actorfilm
+-- ----------------------------
 DROP TABLE IF EXISTS `t_actorfilm`;
-
-CREATE TABLE `t_actorfilm` (
+CREATE TABLE `t_actorfilm`  (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '影片演员关系id',
-  `a_id` int(11) NOT NULL COMMENT '演员id',
-  `f_id` int(11) NOT NULL COMMENT '影片id',
+  `actorId` int(10) NOT NULL COMMENT '演员id',
+  `filmId` int(10) NOT NULL COMMENT '影片id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
-/*Data for the table `t_actorfilm` */
-
-/*Table structure for table `t_actorimg` */
-
+-- ----------------------------
+-- Table structure for t_actorimg
+-- ----------------------------
 DROP TABLE IF EXISTS `t_actorimg`;
-
-CREATE TABLE `t_actorimg` (
+CREATE TABLE `t_actorimg`  (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '照片演员的关系id',
-  `a_img_url` varchar(255) DEFAULT NULL COMMENT '照片路径',
-  `a_id` int(11) DEFAULT NULL COMMENT '演员id',
+  `imgUrl` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '照片路径',
+  `aid` int(10) DEFAULT NULL COMMENT '演员id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
-/*Data for the table `t_actorimg` */
-
-/*Table structure for table `t_address` */
-
+-- ----------------------------
+-- Table structure for t_address
+-- ----------------------------
 DROP TABLE IF EXISTS `t_address`;
+CREATE TABLE `t_address`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '地区id',
+  `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '地区名',
+  `parentId` int(11) DEFAULT NULL COMMENT '父地区id',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
-CREATE TABLE `t_address` (
-  `a_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '地区id',
-  `a_name` varchar(255) NOT NULL COMMENT '地区名',
-  `pri_id` int(11) DEFAULT NULL COMMENT '父地区id',
-  PRIMARY KEY (`a_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+-- ----------------------------
+-- Records of t_address
+-- ----------------------------
+INSERT INTO `t_address` VALUES (1, '北京', 0);
+INSERT INTO `t_address` VALUES (2, '河南', 0);
+INSERT INTO `t_address` VALUES (3, '上海', 0);
+INSERT INTO `t_address` VALUES (4, '江苏', 0);
+INSERT INTO `t_address` VALUES (5, '深圳', 0);
+INSERT INTO `t_address` VALUES (6, '山东', 0);
+INSERT INTO `t_address` VALUES (7, '陕西', 0);
+INSERT INTO `t_address` VALUES (8, '河北', 0);
+INSERT INTO `t_address` VALUES (9, '郑州', 2);
+INSERT INTO `t_address` VALUES (10, '开封', 2);
 
-/*Data for the table `t_address` */
-
-insert  into `t_address`(`a_id`,`a_name`,`pri_id`) values (1,'北京',NULL),(2,'郑州',NULL),(3,'上海',NULL),(4,'杭州',NULL),(5,'深圳',NULL),(6,'开封',NULL),(7,'青岛',NULL),(8,'合肥',NULL),(9,'南昌',NULL),(10,'太原',NULL);
-
-/*Table structure for table `t_cinema` */
-
+-- ----------------------------
+-- Table structure for t_cinema
+-- ----------------------------
 DROP TABLE IF EXISTS `t_cinema`;
+CREATE TABLE `t_cinema`  (
+  `id` int(11) NOT NULL COMMENT '电影院id',
+  `cinemaName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '电影院名',
+  `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '电影院详细地址',
+  `tel` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '联系方式',
+  `addressId` int(11) NOT NULL COMMENT '地区id',
+  `intro` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '影院简介',
+  `imgUrl` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '宣传图片地址',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
-CREATE TABLE `t_cinema` (
-  `c_id` int(11) NOT NULL COMMENT '电影院id',
-  `c_name` varchar(255) NOT NULL COMMENT '电影院名',
-  `c_address` varchar(255) NOT NULL COMMENT '电影院详细地址',
-  `c_phone` varchar(255) NOT NULL COMMENT '联系方式',
-  `a_id` int(11) NOT NULL COMMENT '地区id',
-  `c_intro` varchar(255) NOT NULL COMMENT '影院简介',
-  `c_img_url` varchar(255) NOT NULL COMMENT '宣传图片地址',
-  PRIMARY KEY (`c_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+-- ----------------------------
+-- Records of t_cinema
+-- ----------------------------
+INSERT INTO `t_cinema` VALUES (1, '光合', '二七区工人路店', '0371-66666666', 9, NULL, NULL);
 
-/*Data for the table `t_cinema` */
-
-/*Table structure for table `t_film` */
-
+-- ----------------------------
+-- Table structure for t_film
+-- ----------------------------
 DROP TABLE IF EXISTS `t_film`;
+CREATE TABLE `t_film`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '电影id',
+  `filmName` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '电影名',
+  `filmType` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '电影类型',
+  `filmArea` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '电影区域',
+  `showTime` datetime DEFAULT NULL COMMENT '上映时间',
+  `duration` int(11) DEFAULT NULL COMMENT '时长',
+  `posterUrl` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '海报地址',
+  `filmIntro` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '剧情简介',
+  `language` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '语言版本',
+  `boxOffice` decimal(10, 0) DEFAULT NULL COMMENT '累计票房',
+  `filmScore` decimal(10, 0) DEFAULT NULL COMMENT '电影评分',
+  `expect` decimal(10, 0) DEFAULT NULL COMMENT '想看量',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
-CREATE TABLE `t_film` (
-  `f_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '电影id',
-  `f_name` varchar(255) NOT NULL COMMENT '电影名',
-  `f_type` varchar(255) DEFAULT NULL COMMENT '电影类型',
-  `f_country` varchar(255) DEFAULT NULL COMMENT '电影区域',
-  `f_time` datetime DEFAULT NULL COMMENT '上映时间',
-  `f_duration` int(11) DEFAULT NULL COMMENT '时长',
-  `f_priture_url` varchar(255) DEFAULT NULL COMMENT '海报地址',
-  `f_intro` varchar(2000) DEFAULT NULL COMMENT '剧情简介',
-  `f_language` varchar(255) DEFAULT NULL COMMENT '语言版本',
-  `f_office` double(255,0) DEFAULT NULL COMMENT '累计票房',
-  `f_score` double DEFAULT NULL COMMENT '电影评分',
-  `f_expectation_value` double DEFAULT NULL COMMENT '想看量',
-  `f_status` int(11) DEFAULT '1' COMMENT '电影状态（0正映，1即映，2经典电影）',
-  PRIMARY KEY (`f_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
-
-/*Data for the table `t_film` */
-
-/*Table structure for table `t_filmimg` */
-
+-- ----------------------------
+-- Table structure for t_filmimg
+-- ----------------------------
 DROP TABLE IF EXISTS `t_filmimg`;
+CREATE TABLE `t_filmimg`  (
+  `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '影片图片集id',
+  `filmImgUrl` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '图片地址',
+  `filmId` int(11) DEFAULT NULL COMMENT '影片id',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
-CREATE TABLE `t_filmimg` (
-  `id` varchar(255) DEFAULT NULL COMMENT '影片图片集id',
-  `f_img_url` varchar(255) DEFAULT NULL COMMENT '图片地址',
-  `f_id` int(11) DEFAULT NULL COMMENT '影片id'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
-
-/*Data for the table `t_filmimg` */
-
-/*Table structure for table `t_order` */
-
+-- ----------------------------
+-- Table structure for t_order
+-- ----------------------------
 DROP TABLE IF EXISTS `t_order`;
-
-CREATE TABLE `t_order` (
-  `o_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '订单id',
-  `u_id` int(11) DEFAULT NULL COMMENT '用户id',
-  `r_id` int(11) DEFAULT NULL COMMENT '放映记录id',
-  `seat_num` int(11) DEFAULT NULL COMMENT '座位数量',
-  `seat_info` varchar(255) DEFAULT NULL COMMENT '座位信息',
-  `money` double(6,0) DEFAULT NULL COMMENT '金额',
+CREATE TABLE `t_order`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '订单id',
+  `userId` int(11) DEFAULT NULL COMMENT '用户id',
+  `recordId` int(11) DEFAULT NULL COMMENT '放映记录id',
+  `seatNum` int(11) DEFAULT NULL COMMENT '座位数量',
+  `seatInfo` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '座位信息',
+  `money` decimal(6, 2) DEFAULT NULL COMMENT '金额',
   `status` int(11) DEFAULT NULL COMMENT '状态',
-  `add_time` datetime DEFAULT NULL COMMENT '购买时间',
-  `o_phone` int(11) DEFAULT NULL COMMENT '取票手机号',
-  PRIMARY KEY (`o_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+  `buyTime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP COMMENT '购买时间',
+  `phone` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '取票手机号',
+  `orderNum` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '订单号',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
-/*Data for the table `t_order` */
+-- ----------------------------
+-- Records of t_order
+-- ----------------------------
+INSERT INTO `t_order` VALUES (1, 1, 2, 2, '三排一号，三排二号', 59.00, 2, '2019-12-20 08:12:14', '18878944578', '20191220081214263863');
 
-/*Table structure for table `t_ordertype` */
+-- ----------------------------
+-- Table structure for t_orderitem
+-- ----------------------------
+DROP TABLE IF EXISTS `t_orderitem`;
+CREATE TABLE `t_orderitem`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `oid` int(20) DEFAULT NULL COMMENT '订单编号',
+  `roomName` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '放映厅',
+  `ticketInfo` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '票信息',
+  `cinemaName` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '电影院',
+  `seatInfo` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '座位',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
-DROP TABLE IF EXISTS `t_ordertype`;
+-- ----------------------------
+-- Records of t_orderitem
+-- ----------------------------
+INSERT INTO `t_orderitem` VALUES (1, 1, '一号厅', '三排四座', '光合影城', '3-4');
+INSERT INTO `t_orderitem` VALUES (2, 1, '一号厅', '三排五座', '光合影城', '3-5');
 
-CREATE TABLE `t_ordertype` (
-  `ot_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '订单状态id',
-  `typename` varchar(255) NOT NULL COMMENT '订单状态',
-  PRIMARY KEY (`ot_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
-
-/*Data for the table `t_ordertype` */
-
-insert  into `t_ordertype`(`ot_id`,`typename`) values (1,'待支付'),(2,'未领票'),(3,'已完成');
-
-/*Table structure for table `t_record` */
-
+-- ----------------------------
+-- Table structure for t_record
+-- ----------------------------
 DROP TABLE IF EXISTS `t_record`;
+CREATE TABLE `t_record`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '放映记录id',
+  `filmId` int(11) DEFAULT NULL COMMENT '影片id',
+  `cinemaId` int(11) DEFAULT NULL COMMENT '影院id',
+  `roomId` int(11) DEFAULT NULL COMMENT '放映厅id',
+  `startTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '开始时间',
+  `endTime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '预计结束时间',
+  `totalSeat` int(11) DEFAULT NULL COMMENT '总座位数',
+  `sellNum` int(11) DEFAULT NULL COMMENT '已售座位数',
+  `profit` decimal(10, 2) DEFAULT NULL COMMENT '价格',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
-CREATE TABLE `t_record` (
-  `r_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '放映记录id',
-  `f_id` int(11) DEFAULT NULL COMMENT '影片id',
-  `c_id` int(11) DEFAULT NULL COMMENT '影院id',
-  `room_id` int(11) DEFAULT NULL COMMENT '放映厅id',
-  `starttime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '开始时间',
-  `endtime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '预计结束时间',
-  `total_num` int(11) DEFAULT NULL COMMENT '总座位数',
-  `sel_num` int(11) DEFAULT NULL COMMENT '已售座位数',
-  `r_price` double(10,2) DEFAULT NULL COMMENT '价格',
-  PRIMARY KEY (`r_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
-
-/*Data for the table `t_record` */
-
-/*Table structure for table `t_room` */
-
+-- ----------------------------
+-- Table structure for t_room
+-- ----------------------------
 DROP TABLE IF EXISTS `t_room`;
+CREATE TABLE `t_room`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '放映厅id',
+  `roomName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '放映厅名',
+  `seatFound` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '座位布局信息',
+  `roomType` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '放映厅类型',
+  `seatNum` int(11) DEFAULT NULL COMMENT '座位数',
+  `cinemaId` int(11) DEFAULT NULL COMMENT '影院id',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
-CREATE TABLE `t_room` (
-  `room_id` int(11) NOT NULL COMMENT '放映厅id',
-  `room_name` varchar(255) NOT NULL COMMENT '放映厅名',
-  `room_content` varchar(255) NOT NULL COMMENT '座位布局信息',
-  `room_type` varchar(255) DEFAULT NULL COMMENT '放映厅类型',
-  `room_num` int(11) DEFAULT NULL COMMENT '座位数',
-  `c_id` int(11) DEFAULT NULL COMMENT '影院id',
-  PRIMARY KEY (`room_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+-- ----------------------------
+-- Records of t_room
+-- ----------------------------
+INSERT INTO `t_room` VALUES (1, '光合一号厅', '普通', '2D', 55, 1);
+INSERT INTO `t_room` VALUES (2, '光合二号厅', '高级', '3D', 50, 1);
 
-/*Data for the table `t_room` */
+-- ----------------------------
+-- Table structure for t_user
+-- ----------------------------
+DROP TABLE IF EXISTS `t_user`;
+CREATE TABLE `t_user`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户id',
+  `userName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '用户昵称',
+  `pwd` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户密码',
+  `sex` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '性别',
+  `birthday` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '生日',
+  `animation` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '生活状态',
+  `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '手机号',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+SET FOREIGN_KEY_CHECKS = 1;
