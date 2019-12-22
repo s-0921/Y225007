@@ -23,9 +23,11 @@
     <!-- 加载注解  -->
     <mvc:annotation-driven/>
     <!-- 配置视图-->
-    <mvc:view-controller path="/loginUI" view-name="login"/>
+    <mvc:view-controller path="/filmMain" view-name="FilmMain"/>
     <mvc:view-controller path="/registerUI" view-name="register"/>
-    <mvc:view-controller path="/main" view-name="main"/>
+    <mvc:view-controller path="/chooseFilm" view-name="ChooseFilm"/>
+    <mvc:view-controller path="/chooseCinema" view-name="ChooseCinema"/>
+    <mvc:view-controller path="/loginUser" view-name="loginUser"/>
 
     <mvc:resources mapping="/js/**" location="/js/"/>
     <mvc:resources mapping="/cn/**" location="/cn/controller"/>
