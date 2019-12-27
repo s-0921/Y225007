@@ -34,6 +34,6 @@ public class FilmImgServiceImpl implements FilmImgService {
     //删除图片
     @Override
     public void removeById(Integer id) {
-        filmImgMapper.deleteById(id);
+        filmImgMapper.deleteByPrimaryKey(id);
     }
 }

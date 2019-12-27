@@ -1,72 +1,67 @@
 package cn.entity;
 
 import java.util.Date;
-/*
- * 实体类：演职人员
- */
-/**
- * 演员Bean
- */
+
 public class Actor {
-    private Integer aId;//主键编号
+    private Integer id;
 
-    private String aName;//演员名
+    private String actorname;
 
-    private String aSex;//演员性别
+    private String actorsex;
 
-    private String aAddress;//演员籍贯
+    private String address;
 
-    private Date aBirthday;//演员生日
+    private Date born;
 
-    public Actor(Integer aId, String aName, String aSex, String aAddress, Date aBirthday) {
-        this.aId = aId;
-        this.aName = aName;
-        this.aSex = aSex;
-        this.aAddress = aAddress;
-        this.aBirthday = aBirthday;
+    public Actor(Integer id, String actorname, String actorsex, String address, Date born) {
+        this.id = id;
+        this.actorname = actorname;
+        this.actorsex = actorsex;
+        this.address = address;
+        this.born = born;
     }
 
     public Actor() {
         super();
     }
 
-    public Integer getaId() {
-        return aId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setaId(Integer aId) {
-        this.aId = aId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getaName() {
-        return aName;
+    public String getActorname() {
+        return actorname;
     }
 
-    public void setaName(String aName) {
-        this.aName = aName == null ? null : aName.trim();
+    public void setActorname(String actorname) {
+        this.actorname = actorname == null ? null : actorname.trim();
     }
 
-    public String getaSex() {
-        return aSex;
+    public String getActorsex() {
+        return actorsex;
     }
 
-    public void setaSex(String aSex) {
-        this.aSex = aSex == null ? null : aSex.trim();
+    public void setActorsex(String actorsex) {
+        this.actorsex = actorsex == null ? null : actorsex.trim();
     }
 
-    public String getaAddress() {
-        return aAddress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setaAddress(String aAddress) {
-        this.aAddress = aAddress == null ? null : aAddress.trim();
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
     }
 
-    public Date getaBirthday() {
-        return aBirthday;
+    public Date getBorn() {
+        return born;
     }
 
-    public void setaBirthday(Date aBirthday) {
-        this.aBirthday = aBirthday;
+    public void setBorn(Date born) {
+        this.born = born;
     }
 }

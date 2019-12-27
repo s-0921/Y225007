@@ -1,179 +1,156 @@
 package cn.entity;
 
+import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 
-/**
- * 实体类：电影
- */
 public class Film {
-    private Integer fId;//编号
+    private Integer id;
 
-    private String fName;//电影名
+    private String filmname;
 
-    private String fType;//电影类型
+    private String filmtype;
 
-    private String fCountry;//电影国家
+    private String filmarea;
 
-    private Date fTime;//上映时间
+    private Date showtime;
 
-    private Integer fDuration;//播放时长
+    private Integer duration;
 
-    private String fPritureUrl;//地址海报
+    private String posterurl;
 
-    private String fIntro;//剧情简介
+    private String filmintro;
 
-    private String fLanguage;//语言
+    private String language;
 
-    private Double fOffice;//票房
+    private BigDecimal boxoffice;
 
-    private Double fScore;//评分
+    private BigDecimal filmscore;
 
-    private Double fExpectationValue;//期待值
+    private BigDecimal expect;
 
-    private Integer fStatus;//电影状态
+    private Integer state;
 
-
-    private List<FilmImg> filmImgs;//图集
-    private List<Actor> actors;//演员
-
-//    public Film(Integer fId, String fName, String fType, String fCountry, Date fTime, Integer fDuration, String fPritureUrl, String fIntro, String fLanguage, Double fOffice, Double fScore, Double fExpectationValue) {
-//        this.fId = fId;
-//        this.fName = fName;
-//        this.fType = fType;
-//        this.fCountry = fCountry;
-//        this.fTime = fTime;
-//        this.fDuration = fDuration;
-//        this.fPritureUrl = fPritureUrl;
-//        this.fIntro = fIntro;
-//        this.fLanguage = fLanguage;
-//        this.fOffice = fOffice;
-//        this.fScore = fScore;
-//        this.fExpectationValue = fExpectationValue;
-//        this.fStatus = fStatus;
-//    }
+    public Film(Integer id, String filmname, String filmtype, String filmarea, Date showtime, Integer duration, String posterurl, String filmintro, String language, BigDecimal boxoffice, BigDecimal filmscore, BigDecimal expect,Integer state) {
+        this.id = id;
+        this.filmname = filmname;
+        this.filmtype = filmtype;
+        this.filmarea = filmarea;
+        this.showtime = showtime;
+        this.duration = duration;
+        this.posterurl = posterurl;
+        this.filmintro = filmintro;
+        this.language = language;
+        this.boxoffice = boxoffice;
+        this.filmscore = filmscore;
+        this.expect = expect;
+        this.state = state;
+    }
 
     public Film() {
         super();
     }
 
-    public Integer getfId() {
-        return fId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setfId(Integer fId) {
-        this.fId = fId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getfName() {
-        return fName;
+    public String getFilmname() {
+        return filmname;
     }
 
-    public void setfName(String fName) {
-        this.fName = fName == null ? null : fName.trim();
+    public void setFilmname(String filmname) {
+        this.filmname = filmname == null ? null : filmname.trim();
     }
 
-    public String getfType() {
-        return fType;
+    public String getFilmtype() {
+        return filmtype;
     }
 
-    public void setfType(String fType) {
-        this.fType = fType == null ? null : fType.trim();
+    public void setFilmtype(String filmtype) {
+        this.filmtype = filmtype == null ? null : filmtype.trim();
     }
 
-    public String getfCountry() {
-        return fCountry;
+    public String getFilmarea() {
+        return filmarea;
     }
 
-    public void setfCountry(String fCountry) {
-        this.fCountry = fCountry == null ? null : fCountry.trim();
+    public void setFilmarea(String filmarea) {
+        this.filmarea = filmarea == null ? null : filmarea.trim();
     }
 
-    public Date getfTime() {
-        return fTime;
+    public Date getShowtime() {
+        return showtime;
     }
 
-    public void setfTime(Date fTime) {
-        this.fTime = fTime;
+    public void setShowtime(Date showtime) {
+        this.showtime = showtime;
     }
 
-    public Integer getfDuration() {
-        return fDuration;
+    public Integer getDuration() {
+        return duration;
     }
 
-    public void setfDuration(Integer fDuration) {
-        this.fDuration = fDuration;
+    public void setDuration(Integer duration) {
+        this.duration = duration;
     }
 
-    public String getfPritureUrl() {
-        return fPritureUrl;
+    public String getPosterurl() {
+        return posterurl;
     }
 
-    public void setfPritureUrl(String fPritureUrl) {
-        this.fPritureUrl = fPritureUrl == null ? null : fPritureUrl.trim();
+    public void setPosterurl(String posterurl) {
+        this.posterurl = posterurl == null ? null : posterurl.trim();
     }
 
-    public String getfIntro() {
-        return fIntro;
+    public String getFilmintro() {
+        return filmintro;
     }
 
-    public void setfIntro(String fIntro) {
-        this.fIntro = fIntro == null ? null : fIntro.trim();
+    public void setFilmintro(String filmintro) {
+        this.filmintro = filmintro == null ? null : filmintro.trim();
     }
 
-    public String getfLanguage() {
-        return fLanguage;
+    public String getLanguage() {
+        return language;
     }
 
-    public void setfLanguage(String fLanguage) {
-        this.fLanguage = fLanguage == null ? null : fLanguage.trim();
+    public void setLanguage(String language) {
+        this.language = language == null ? null : language.trim();
     }
 
-    public Double getfOffice() {
-        return fOffice;
+    public BigDecimal getBoxoffice() {
+        return boxoffice;
     }
 
-    public void setfOffice(Double fOffice) {
-        this.fOffice = fOffice;
+    public void setBoxoffice(BigDecimal boxoffice) {
+        this.boxoffice = boxoffice;
     }
 
-    public Double getfScore() {
-        return fScore;
+    public BigDecimal getFilmscore() {
+        return filmscore;
     }
 
-    public void setfScore(Double fScore) {
-        this.fScore = fScore;
+    public void setFilmscore(BigDecimal filmscore) {
+        this.filmscore = filmscore;
     }
 
-    public Double getfExpectationValue() {
-        return fExpectationValue;
+    public BigDecimal getExpect() {
+        return expect;
     }
 
-    public void setfExpectationValue(Double fExpectationValue) {
-        this.fExpectationValue = fExpectationValue;
+    public void setExpect(BigDecimal expect) {
+        this.expect = expect;
     }
 
-    public Integer getfStatus() {
-        return fStatus;
+    public Integer getState() {
+        return state;
     }
 
-    public void setfStatus(Integer fStatus) {
-        this.fStatus = fStatus;
-    }
-
-    public List<FilmImg> getFilmImgs() {
-        return filmImgs;
-    }
-
-    public void setFilmImgs(List<FilmImg> filmImgs) {
-        this.filmImgs = filmImgs;
-    }
-
-    public List<Actor> getActors() {
-        return actors;
-    }
-
-    public void setActors(List<Actor> actors) {
-        this.actors = actors;
+    public void setState(Integer state) {
+        this.state = state;
     }
 }

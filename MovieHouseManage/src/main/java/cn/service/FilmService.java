@@ -1,49 +1,35 @@
 package cn.service;
 
+import cn.entity.ActorByFilm;
 import cn.entity.Film;
-import cn.entity.FilmImg;
 
+import javax.xml.crypto.Data;
+import java.util.Date;
 import java.util.List;
 
-
 public interface FilmService {
-    public int removeByPrimaryKey(Integer fId);
 
-    public int add(Film record);
 
-    public int addSelective(Film record);
 
-    public Film queryByPrimaryKey(Integer fId);
+    List<Film> getAllFilm();
 
-    public int changeByPrimaryKeySelective(Film record);
+    Film getFilmByName(String name);
 
-    public int changeByPrimaryKey(Film record);
+    List<Film> getFilmByType(String type);
 
-    //查询所有电影
-    public List<Film> queryAllFilm();
+    List<Film> getFilmByArea(String area);
 
-    //即将上映电影列表
-    public List<Film> queryByLessTime();
+    List<Film> getFilmByShowTime();
 
-    //正在热播电影列表
-    public List<Film> queryByGreaterTime();
+    List<Film> getFilmByLessTime();
 
-    //查询票房榜（前10）
-    public List<Film> queryByOffice();
+    List<Film> getByOffice();
 
-    //查询期待榜（前50）
-    public List<Film> queryByExpectation();
+    List<Film> getByOffice_100();
 
-    //查询 top100（所有电影票房前100）
-    public List<Film> queryByTOP();
+    List<Film> getByExpect();
 
-    //查询好评榜（前10）
-    public List<Film> queryByCount();
+    List<Film> getByScore();
 
-    //根据动态条件（上映时间，电影类型，区域，年代）查询电影列表
-    public List<Film> queryByCondition();
-
-    //根据id查询电影所有信息（图集，演员。。。）
-    public List<Film> queryByFId(Integer fId);
-
+    List<Film> getFilmByCondition(String type, String area, String time);
 }

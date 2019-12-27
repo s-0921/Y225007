@@ -1,7 +1,12 @@
 package cn.controller;
 
+import cn.entity.Cinema;
+import cn.entity.Film;
 import cn.entity.User;
+import cn.service.CinemaService;
+import cn.service.FilmService;
 import cn.service.UserService;
+import cn.utils.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,23 +23,28 @@ import javax.servlet.http.HttpSession;
 import java.util.*;
 @Controller
 @RequestMapping("/user")
+@SessionAttributes(value = {"userUP","filmList"})
 public class UserController {
     @Autowired
     private UserService us;
-
+    @Autowired
+    private FilmService fs;
 
     @RequestMapping("/login")
     @ResponseBody
-    public Boolean login(String phone, String pwd){
+    public Integer login(String phone, String pwd,Model model){
         if (phone.trim() != ""&&pwd.trim() != ""){//判断传入数据是否为空
             User userON = us.getByPhone(phone);//根据电话查询信息
             if(userON == null){//判断查询信息是否为空
-                return false;//回调信息
+                return 1;//回调信息
             }else{
-                if(userON.getuPwd().equals(pwd)){//判断密密码是否正确
-                    return true;
+                if(MD5Util.toMd5(pwd).equals(userON.getPwd())){//判断密密码是否正确
+                    List<Film> films = fs.getAllFilm();
+                    model.addAttribute("filmList",films);
+                    model.addAttribute("userUP",userON);
+                    return 2;
                 }else{
-                    return false;
+                    return 3;
                 }
             }
         }
@@ -46,7 +56,7 @@ public class UserController {
     public Boolean rePhone(String phone){
         List<User> list = us.getAllUsers();
         for (User u:list) {
-            if(u.getuPhone().trim().equals(phone.trim())){
+            if(u.getPhone().trim().equals(phone.trim())){
                 return true;
             }
         }
@@ -67,7 +77,9 @@ public class UserController {
     @RequestMapping("/register")
     @ResponseBody
     public boolean register(User user){
-        if(user.getuPhone()!=null){
+        if(user.getPhone()!=null){
+            String pwd = user.getPwd();
+            user.setPwd(MD5Util.toMd5(pwd));
             Integer result = us.addUser(user);
             if(result == 1){
                 return true;

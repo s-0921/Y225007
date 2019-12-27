@@ -1,10 +1,10 @@
 package cn.service.impl;
 
 import cn.entity.Order;
-import cn.entity.Ticket;
+import cn.entity.OrderItem;
 import cn.entity.User;
+import cn.mapper.OrderItemMapper;
 import cn.mapper.OrderMapper;
-import cn.mapper.TicketMapper;
 import cn.mapper.UserMapper;
 import cn.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
     private OrderMapper orderMapper;
 
     @Autowired
-    private TicketMapper ticketMapper;
+    private OrderItemMapper orderItemMapper;
 
     @Override
     public List<User> getAllUsers() {
@@ -43,7 +43,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Integer addTicKet(Ticket ticket) {
-        return ticketMapper.insertSelective(ticket);
+    public Integer addOrderItem(OrderItem orderItem) {
+        return orderItemMapper.insertSelective(orderItem);
     }
+
+    @Override
+    public Order getOrderByOrderId(Integer id) {
+        return orderMapper.selectByPrimaryKey(id);
+    }
+
 }

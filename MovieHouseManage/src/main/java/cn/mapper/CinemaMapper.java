@@ -2,16 +2,24 @@ package cn.mapper;
 
 import cn.entity.Cinema;
 
+import java.util.List;
+
 public interface CinemaMapper {
-    public int deleteByPrimaryKey(Integer cId);
+    int deleteByPrimaryKey(Integer id);
 
-    public int insert(Cinema record);
+    int insert(Cinema record);
 
-    public int insertSelective(Cinema record);
+    int insertSelective(Cinema record);
 
-    public Cinema selectByPrimaryKey(Integer cId);
+    Cinema selectByPrimaryKey(Integer id);
 
-    public int updateByPrimaryKeySelective(Cinema record);
+    int updateByPrimaryKeySelective(Cinema record);
 
-    public int updateByPrimaryKey(Cinema record);
+    int updateByPrimaryKey(Cinema record);
+
+    List<Cinema> selectAll();
+
+    List<Cinema> selectByName(String name);
+
+    List<Cinema> selectByAddressId(Integer addressId);
 }

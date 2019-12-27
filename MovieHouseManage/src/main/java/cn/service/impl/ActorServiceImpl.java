@@ -1,16 +1,22 @@
 package cn.service.impl;
 
 import cn.entity.Actor;
+import cn.entity.ActorByFilm;
+import cn.mapper.ActorByFilmMapper;
 import cn.mapper.ActorMapper;
 import cn.service.ActorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ActorServiceImpl implements ActorService {
 
     @Autowired
     private ActorMapper actorMapper;
+    @Autowired
+    private ActorByFilmMapper actorByFilmMapper;
 
     @Override
     public int removeByPrimaryKey(Integer aId) {
@@ -40,5 +46,15 @@ public class ActorServiceImpl implements ActorService {
     @Override
     public int changeByPrimaryKey(Actor record) {
         return actorMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public List<ActorByFilm> getByFilmId(Integer filmId) {
+        return actorByFilmMapper.selectByFilmId(filmId);
+    }
+
+    @Override
+    public List<Actor> getByIds(List<Integer> ids) {
+        return actorMapper.selectByIds(ids);
     }
 }

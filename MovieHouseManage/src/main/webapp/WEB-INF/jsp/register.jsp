@@ -97,7 +97,6 @@
                     alert("请填写完信息")
                     return;
                 }
-
                 $.ajax({
                     url:"${pageContext.request.contextPath}/user/register",
                     type: "POST",
@@ -154,7 +153,7 @@
         <table>
             <tr>
                 <td>手机号：</td>
-                <td><input type="text" name="uPhone" id="phone" /></td>
+                <td><input type="text" name="phone" id="phone" /></td>
                 <td id="magP"></td>
             </tr>
             <tr>
@@ -164,7 +163,7 @@
             </tr>
             <tr>
                 <td>密码：</td>
-                <td><input type="password" name="uPwd" id="pwd" /></td>
+                <td><input type="password" name="pwd" id="pwd" /></td>
                 <td id="magPwd"></td>
             </tr>
             <tr>

@@ -3,15 +3,15 @@ package cn.mapper;
 import cn.entity.Order;
 
 public interface OrderMapper {
-    public int deleteByPrimaryKey(Integer oId);
+    int deleteByPrimaryKey(Integer id);
 
-    public int insert(Order record);
+    int insert(Order record);
 
-    public int insertSelective(Order record);
+    int insertSelective(Order record);
 
-    public Order selectByPrimaryKey(Integer oId);
+    Order selectByPrimaryKey(Integer id);
 
-    public int updateByPrimaryKeySelective(Order record);
+    int updateByPrimaryKeySelective(Order record);
 
-    public int updateByPrimaryKey(Order record);
+    int updateByPrimaryKey(Order record);
 }

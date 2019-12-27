@@ -5,15 +5,15 @@ import cn.entity.User;
 import java.util.List;
 
 public interface UserMapper {
-    public int deleteByPrimaryKey(Integer uIdu);
+    int deleteByPrimaryKey(Integer id);
 
-    public int insert(User record);
+    int insert(User record);
 
-    public int insertSelective(User record);
+    int insertSelective(User record);
 
-    public User selectByPrimaryKey(Integer uIdu);
+    User selectByPrimaryKey(Integer id);
 
-    public int updateByPrimaryKeySelective(User record);
+    int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
 

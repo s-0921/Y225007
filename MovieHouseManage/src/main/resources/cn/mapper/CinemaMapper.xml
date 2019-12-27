@@ -3,117 +3,137 @@
 <mapper namespace="cn.mapper.CinemaMapper">
   <resultMap id="BaseResultMap" type="cn.entity.Cinema">
     <constructor>
-      <idArg column="c_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="c_name" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="c_address" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="c_phone" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="a_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="c_intro" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="c_img_url" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="cinemaName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="address" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="tel" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="addressId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="intro" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="imgUrl" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
+
+    <collection property="rooms" select="cn.mapper.RoomMapper.selectAllByCinemaId" column="id"></collection>
   </resultMap>
   <sql id="Base_Column_List">
-    c_id, c_name, c_address, c_phone, a_id, c_intro, c_img_url
+    id, cinemaName, address, tel, addressId, intro, imgUrl
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from t_cinema
-    where c_id = #{cId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_cinema
+  </select>
+  <select id="selectByName" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_cinema
+    where cinemaName like concat('%',#{name,jdbcType=VARCHAR},'%')
+  </select>
+  <select id="selectByAddressId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_cinema
+    where addressId = #{addressId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_cinema
-    where c_id = #{cId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.entity.Cinema">
-    insert into t_cinema (c_id, c_name, c_address, 
-      c_phone, a_id, c_intro, 
-      c_img_url)
-    values (#{cId,jdbcType=INTEGER}, #{cName,jdbcType=VARCHAR}, #{cAddress,jdbcType=VARCHAR}, 
-      #{cPhone,jdbcType=VARCHAR}, #{aId,jdbcType=INTEGER}, #{cIntro,jdbcType=VARCHAR}, 
-      #{cImgUrl,jdbcType=VARCHAR})
+    insert into t_cinema (id, cinemaName, address, 
+      tel, addressId, intro, 
+      imgUrl)
+    values (#{id,jdbcType=INTEGER}, #{cinemaname,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{tel,jdbcType=VARCHAR}, #{addressid,jdbcType=INTEGER}, #{intro,jdbcType=VARCHAR}, 
+      #{imgurl,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.entity.Cinema">
     insert into t_cinema
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="cId != null">
-        c_id,
+      <if test="id != null">
+        id,
       </if>
-      <if test="cName != null">
-        c_name,
+      <if test="cinemaname != null">
+        cinemaName,
       </if>
-      <if test="cAddress != null">
-        c_address,
+      <if test="address != null">
+        address,
       </if>
-      <if test="cPhone != null">
-        c_phone,
+      <if test="tel != null">
+        tel,
       </if>
-      <if test="aId != null">
-        a_id,
+      <if test="addressid != null">
+        addressId,
       </if>
-      <if test="cIntro != null">
-        c_intro,
+      <if test="intro != null">
+        intro,
       </if>
-      <if test="cImgUrl != null">
-        c_img_url,
+      <if test="imgurl != null">
+        imgUrl,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="cId != null">
-        #{cId,jdbcType=INTEGER},
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
       </if>
-      <if test="cName != null">
-        #{cName,jdbcType=VARCHAR},
+      <if test="cinemaname != null">
+        #{cinemaname,jdbcType=VARCHAR},
       </if>
-      <if test="cAddress != null">
-        #{cAddress,jdbcType=VARCHAR},
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
       </if>
-      <if test="cPhone != null">
-        #{cPhone,jdbcType=VARCHAR},
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
       </if>
-      <if test="aId != null">
-        #{aId,jdbcType=INTEGER},
+      <if test="addressid != null">
+        #{addressid,jdbcType=INTEGER},
       </if>
-      <if test="cIntro != null">
-        #{cIntro,jdbcType=VARCHAR},
+      <if test="intro != null">
+        #{intro,jdbcType=VARCHAR},
       </if>
-      <if test="cImgUrl != null">
-        #{cImgUrl,jdbcType=VARCHAR},
+      <if test="imgurl != null">
+        #{imgurl,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="cn.entity.Cinema">
     update t_cinema
     <set>
-      <if test="cName != null">
-        c_name = #{cName,jdbcType=VARCHAR},
+      <if test="cinemaname != null">
+        cinemaName = #{cinemaname,jdbcType=VARCHAR},
       </if>
-      <if test="cAddress != null">
-        c_address = #{cAddress,jdbcType=VARCHAR},
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
       </if>
-      <if test="cPhone != null">
-        c_phone = #{cPhone,jdbcType=VARCHAR},
+      <if test="tel != null">
+        tel = #{tel,jdbcType=VARCHAR},
       </if>
-      <if test="aId != null">
-        a_id = #{aId,jdbcType=INTEGER},
+      <if test="addressid != null">
+        addressId = #{addressid,jdbcType=INTEGER},
       </if>
-      <if test="cIntro != null">
-        c_intro = #{cIntro,jdbcType=VARCHAR},
+      <if test="intro != null">
+        intro = #{intro,jdbcType=VARCHAR},
       </if>
-      <if test="cImgUrl != null">
-        c_img_url = #{cImgUrl,jdbcType=VARCHAR},
+      <if test="imgurl != null">
+        imgUrl = #{imgurl,jdbcType=VARCHAR},
       </if>
     </set>
-    where c_id = #{cId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.entity.Cinema">
     update t_cinema
-    set c_name = #{cName,jdbcType=VARCHAR},
-      c_address = #{cAddress,jdbcType=VARCHAR},
-      c_phone = #{cPhone,jdbcType=VARCHAR},
-      a_id = #{aId,jdbcType=INTEGER},
-      c_intro = #{cIntro,jdbcType=VARCHAR},
-      c_img_url = #{cImgUrl,jdbcType=VARCHAR}
-    where c_id = #{cId,jdbcType=INTEGER}
+    set cinemaName = #{cinemaname,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      addressId = #{addressid,jdbcType=INTEGER},
+      intro = #{intro,jdbcType=VARCHAR},
+      imgUrl = #{imgurl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </update>
+
 </mapper>

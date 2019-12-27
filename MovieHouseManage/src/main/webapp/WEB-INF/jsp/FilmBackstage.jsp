@@ -84,12 +84,20 @@
                 <li lay-id="55">订单管理</li>
             </ul>
             <div class="layui-tab-content">
-                <div class="layui-tab-item layui-show">
+                <div class="layui-tab-item layui-show"style="background: #9F9F9F">
                     <br/>
                     <br/>
                     <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;添加电影</h1>
                     <br/>
                     <br/>
+                    <div class="layui-upload">
+                        <div class="layui-upload-list">
+                            <img class="layui-upload-img" id="demo1" style="width: 120px ;height: 140px">
+                            <p id="demoText"></p>
+                            <button type="button" class="layui-btn" id="test2">上传图片</button>
+                        </div>
+                    </div>
+
                     <div class="layui-upload" style=" width: 50%; margin: auto 0px">
                         <form class="layui-form" action="">
                             <div class="layui-form-item">
@@ -176,6 +184,7 @@
     </div>
 </div>
 <script src="${pageContext.request.contextPath}/layui/layui.js"></script>
+
 <script>
     //JavaScript代码区域
     layui.use('element', function(){
@@ -222,6 +231,44 @@
         });
 
     });
+</script>
+<script>
+    layui.use('upload', function () {
+        var upload = layui.upload;
+        //普通图片上传
+        var uploadInst = upload.render({
+            //这里url就是 你上传图片的接口
+//before是上传图片之前的回调，就是将图片展示出来啦
+//done就是完成图片上传后的回调
+//error就是上传发生错误的回调，比如你要上传的服务器不存在要保存图片的文件夹就会触发error回调
+            elem: '#test2'
+            , url: '/fileuploadMovieImg/filmImg'
+            , before: function (obj) {
+                //预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $('#demo1').attr('src', result);
+                });
+
+            }
+            , done: function (res) {
+                //这里回调函数的参数res就是接口返回的数据
+                alert(JSON.stringify(res.data.src))
+                //如果上传失败
+                if (res.code > 0) {
+                    return layer.msg('上传失败');
+                }
+                layer.msg('上传成功')
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst.upload();
+                });
+            }
+        });
+    })
 </script>
 </body>
 </html>

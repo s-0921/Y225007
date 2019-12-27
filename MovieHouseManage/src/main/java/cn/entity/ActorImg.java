@@ -1,20 +1,16 @@
 package cn.entity;
 
-/**
- * 演员图片
- */
 public class ActorImg {
-    private Integer id;//编号
+    private Integer id;
 
-    private String aImgUrl;//图片路径
+    private String imgurl;
 
-    private Integer aId;//演员编号
+    private Integer aid;
 
-
-    public ActorImg(Integer id, String aImgUrl, Integer aId) {
+    public ActorImg(Integer id, String imgurl, Integer aid) {
         this.id = id;
-        this.aImgUrl = aImgUrl;
-        this.aId = aId;
+        this.imgurl = imgurl;
+        this.aid = aid;
     }
 
     public ActorImg() {
@@ -29,19 +25,19 @@ public class ActorImg {
         this.id = id;
     }
 
-    public String getaImgUrl() {
-        return aImgUrl;
+    public String getImgurl() {
+        return imgurl;
     }
 
-    public void setaImgUrl(String aImgUrl) {
-        this.aImgUrl = aImgUrl == null ? null : aImgUrl.trim();
+    public void setImgurl(String imgurl) {
+        this.imgurl = imgurl == null ? null : imgurl.trim();
     }
 
-    public Integer getaId() {
-        return aId;
+    public Integer getAid() {
+        return aid;
     }
 
-    public void setaId(Integer aId) {
-        this.aId = aId;
+    public void setAid(Integer aid) {
+        this.aid = aid;
     }
 }

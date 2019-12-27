@@ -23,10 +23,9 @@ public class TimerTask {
         List<Film> allFilm=(List<Film>) session.getAttribute("allFilm");
 
         for (Film film:allFilm) {
-            Date time =film.getfTime();
+            Date time =film.getShowtime();
             Date date=new Date();
             if(time.compareTo(date) <= 0){
-                film.setfStatus(0);
             }
         }
     }

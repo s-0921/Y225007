@@ -16,7 +16,7 @@
 <div id="header" style=" margin-left: 100px">
     <ul class="layui-nav " style=" background: white;" >
         <li class="layui-nav-item ">
-            <a href=""><img src="${pageContext.request.contextPath}/image/longyanlogo.png"/> </a>
+            <a href=""><img src="${pageContext.request.contextPath}/movieImg/image/longyanlogo.png"/> </a>
         </li>
         <li class="layui-nav-item">
             <a href="javascript:;"  style="color: #0C0C0C">
@@ -28,7 +28,6 @@
                 </c:forEach>
 
             </dl>
-        </li>
         </li>
 
         <li class="layui-nav-item ">
@@ -49,25 +48,24 @@
         <li class="layui-nav-item ">
             <a href=""style="color: #0C0C0C">热点</a>
         </li>
-        <li class="layui-nav-item ">
+        <li class="layui-nav-item "style="margin-right: 450px">
             <a href=""style="color: #0C0C0C">商城</a>
-        </li>
-        <li class="layui-nav-item ">
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </li>
         <li class="layui-nav-item">
             <c:if test="${user eq null or user eq ''}">
-                <a href="javascript:; " style="color: #0C0C0C">
+                <a href="javascript:; ">
                     <img src="https://p0.meituan.net/movie/7dd82a16316ab32c8359debdb04396ef2897.png" class="layui-nav-img">
+                    &nbsp;
                 </a>
                 <dl class="layui-nav-child">
                     <dd><a href="${pageContext.request.contextPath}/loginUser">登录</a></dd>
                 </dl>
             </c:if>
             <c:if test="${user ne null and user ne ''}">
+                <a href="javascript:;" style="color: #0C0C0C">
+                    <img src="https://p0.meituan.net/movie/7dd82a16316ab32c8359debdb04396ef2897.png" class="layui-nav-img">
+                    &nbsp;
+                </a>
                 <dl class="layui-nav-child">
                     <dd><a href="">基本资料</a></dd>
                     <dd><a href="">安全设置</a></dd>

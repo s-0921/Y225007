@@ -1,73 +1,88 @@
 package cn.entity;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
-/**
- * 放映记录Bean
- */
 public class Record {
-    private Integer rId;//编号
+    private Integer id;
 
-    private Integer fId;//电影
+    private Integer filmid;
 
-    private Integer cId;//影院
+    private Integer cinemaid;
 
-    private Integer roomId;//放映厅编号
+    private Integer roomid;
 
-    private Date starttime;//开始时间
+    private Date starttime;
 
-    private Date endtime;//结束时间
+    private Date endtime;
 
-    private Integer totalNum;//总座位数
+    private Integer totalseat;
 
-    private Integer selNum;//售出座位数
+    private Integer sellnum;
 
-    private Double rPrice;//播放厅累计收入
+    private BigDecimal profit;
 
-    public Record(Integer rId, Integer fId, Integer cId, Integer roomId, Date starttime, Date endtime, Integer totalNum, Integer selNum, Double rPrice) {
-        this.rId = rId;
-        this.fId = fId;
-        this.cId = cId;
-        this.roomId = roomId;
+    private Room room;
+
+    public Record(Integer id, Integer filmid, Integer cinemaid, Integer roomid, Date starttime, Date endtime, Integer totalseat, Integer sellnum, BigDecimal profit) {
+        this.id = id;
+        this.filmid = filmid;
+        this.cinemaid = cinemaid;
+        this.roomid = roomid;
         this.starttime = starttime;
         this.endtime = endtime;
-        this.totalNum = totalNum;
-        this.selNum = selNum;
-        this.rPrice = rPrice;
+        this.totalseat = totalseat;
+        this.sellnum = sellnum;
+        this.profit = profit;
+    }
+
+    public Record(Integer id, Integer filmid, Integer cinemaid, Integer roomid, Date starttime, Date endtime, Integer totalseat, Integer sellnum, BigDecimal profit, Room room) {
+        this.id = id;
+        this.filmid = filmid;
+        this.cinemaid = cinemaid;
+        this.roomid = roomid;
+        this.starttime = starttime;
+        this.endtime = endtime;
+        this.totalseat = totalseat;
+        this.sellnum = sellnum;
+        this.profit = profit;
+        this.room = room;
     }
 
     public Record() {
         super();
     }
 
-    public Integer getrId() {
-        return rId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setrId(Integer rId) {
-        this.rId = rId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Integer getfId() {
-        return fId;
+    public Integer getFilmid() {
+        return filmid;
     }
 
-    public void setfId(Integer fId) { this.fId = fId == null ? null : fId; }
-
-    public Integer getcId() {
-        return cId;
+    public void setFilmid(Integer filmid) {
+        this.filmid = filmid;
     }
 
-    public void setcId(Integer cId) {
-        this.cId = cId == null ? null : cId;
+    public Integer getCinemaid() {
+        return cinemaid;
     }
 
-    public Integer getRoomId() {
-        return roomId;
+    public void setCinemaid(Integer cinemaid) {
+        this.cinemaid = cinemaid;
     }
 
-    public void setRoomId(Integer roomId) {
-        this.roomId = roomId == null ? null : roomId;
+    public Integer getRoomid() {
+        return roomid;
+    }
+
+    public void setRoomid(Integer roomid) {
+        this.roomid = roomid;
     }
 
     public Date getStarttime() {
@@ -86,27 +101,35 @@ public class Record {
         this.endtime = endtime;
     }
 
-    public Integer getTotalNum() {
-        return totalNum;
+    public Integer getTotalseat() {
+        return totalseat;
     }
 
-    public void setTotalNum(Integer totalNum) {
-        this.totalNum = totalNum;
+    public void setTotalseat(Integer totalseat) {
+        this.totalseat = totalseat;
     }
 
-    public Integer getSelNum() {
-        return selNum;
+    public Integer getSellnum() {
+        return sellnum;
     }
 
-    public void setSelNum(Integer selNum) {
-        this.selNum = selNum;
+    public void setSellnum(Integer sellnum) {
+        this.sellnum = sellnum;
     }
 
-    public Double getrPrice() {
-        return rPrice;
+    public BigDecimal getProfit() {
+        return profit;
     }
 
-    public void setrPrice(Double rPrice) {
-        this.rPrice = rPrice;
+    public void setProfit(BigDecimal profit) {
+        this.profit = profit;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
     }
 }

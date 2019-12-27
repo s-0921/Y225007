@@ -14,21 +14,54 @@
     <meta charset="utf-8">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <meta http-equiv="cleartype" content="yes" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="renderer" content="webkit" />
+    <meta http-equiv="cleartype" content="yes"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="renderer" content="webkit"/>
 
-    <meta name="HandheldFriendly" content="true" />
-    <meta name="format-detection" content="email=no" />
-    <meta name="format-detection" content="telephone=no" />
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="format-detection" content="email=no"/>
+    <meta name="format-detection" content="telephone=no"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <script>"use strict";!function(){var i=0<arguments.length&&void 0!==arguments[0]?arguments[0]:"_Owl_",n=window;n[i]||(n[i]={isRunning:!1,isReady:!1,preTasks:[],dataSet:[],use:function(i,t){this.isReady&&n.Owl&&n.Owl[i](t),this.preTasks.push({api:i,data:[t]})},add:function(i){this.dataSet.push(i)},run:function(){var t=this;if(!this.isRunning){this.isRunning=!0;var i=n.onerror;n.onerror=function(){this.isReady||this.add({type:"jsError",data:arguments}),i&&i.apply(n,arguments)}.bind(this),(n.addEventListener||n.attachEvent)("error",function(i){t.isReady||t.add({type:"resError",data:[i]})},!0)}}},n[i].run())}();</script>
+    <script>"use strict";
+    !function () {
+        var i = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : "_Owl_", n = window;
+        n[i] || (n[i] = {
+            isRunning: !1, isReady: !1, preTasks: [], dataSet: [], use: function (i, t) {
+                this.isReady && n.Owl && n.Owl[i](t), this.preTasks.push({api: i, data: [t]})
+            }, add: function (i) {
+                this.dataSet.push(i)
+            }, run: function () {
+                var t = this;
+                if (!this.isRunning) {
+                    this.isRunning = !0;
+                    var i = n.onerror;
+                    n.onerror = function () {
+                        this.isReady || this.add({type: "jsError", data: arguments}), i && i.apply(n, arguments)
+                    }.bind(this), (n.addEventListener || n.attachEvent)("error", function (i) {
+                        t.isReady || t.add({type: "resError", data: [i]})
+                    }, !0)
+                }
+            }
+        }, n[i].run())
+    }();</script>
     <script>
         cid = "c_2yzd0xp5";
         ci = 73;
-        window.system = {"seatsPrice":{"1":{"expression":"29X1","price":"29"},"2":{"expression":"29X2","price":"58"},"3":{"expression":"29X3","price":"87"},"4":{"expression":"29X4","price":"116"},"5":{"expression":"29X5","price":"145"},"6":{"expression":"29X6","price":"174"}},"remind":"为了增加您的观影感受，影厅部分座椅加装了按摩坐垫，如有不适，请与工作人员联系～","uuid":"0AE2ED501BEB11EAAECE4DFEB8858F4546A9E910DA714353883578D4ADDDAA3D","cinemaId":17075};
+        window.system = {
+            "seatsPrice": {
+                "1": {"expression": "29X1", "price": "29"},
+                "2": {"expression": "29X2", "price": "58"},
+                "3": {"expression": "29X3", "price": "87"},
+                "4": {"expression": "29X4", "price": "116"},
+                "5": {"expression": "29X5", "price": "145"},
+                "6": {"expression": "29X6", "price": "174"}
+            },
+            "remind": "为了增加您的观影感受，影厅部分座椅加装了按摩坐垫，如有不适，请与工作人员联系～",
+            "uuid": "0AE2ED501BEB11EAAECE4DFEB8858F4546A9E910DA714353883578D4ADDDAA3D",
+            "cinemaId": 17075
+        };
 
         window.openPlatform = '';
         window.openPlatformSub = '';
@@ -37,8 +70,11 @@
     </script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/countSum.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/countSum2.css"/>
-    <script crossorigin="anonymous" src="//s3plus.meituan.net/v1/mss_e2821d7f0cfe4ac1bf9202ecf9590e67/cdn-prod/file:5788b470/stat.88d57c80.js"></script>
-    <script>if(window.devicePixelRatio >= 2) { document.write('<link rel="stylesheet" href="//s3plus.meituan.net/v1/mss_e2821d7f0cfe4ac1bf9202ecf9590e67/cdn-prod/file:5788b470/image-2x.8ba7074d.css"/>') }</script>
+    <script crossorigin="anonymous"
+            src="//s3plus.meituan.net/v1/mss_e2821d7f0cfe4ac1bf9202ecf9590e67/cdn-prod/file:5788b470/stat.88d57c80.js"></script>
+    <script>if (window.devicePixelRatio >= 2) {
+        document.write('<link rel="stylesheet" href="//s3plus.meituan.net/v1/mss_e2821d7f0cfe4ac1bf9202ecf9590e67/cdn-prod/file:5788b470/image-2x.8ba7074d.css"/>')
+    }</script>
     <style>
         @font-face {
             font-family: stonefont;
@@ -53,7 +89,7 @@
     </style>
     <script>
         var _hmt = _hmt || [];
-        (function() {
+        (function () {
             var hm = document.createElement("script");
             hm.src = "https://hm.baidu.com/hm.js?703e94591e87be68cc8da0da7cbd0be2";
             var s = document.getElementsByTagName("script")[0];
@@ -68,19 +104,20 @@
     <div class="header-inner">
 
         <div class="city-container" data-val="{currentcityid:73 }">
-            <a href="${pageContext.request.contextPath}/WEB-INF/jsp/FilmMain.jsp"  data-act="icon-click"><img src="${pageContext.request.contextPath}/image/longyanlogo.png"/></a>
+            <a href="${pageContext.request.contextPath}/WEB-INF/jsp/FilmMain.jsp" data-act="icon-click"><img
+                    src="${pageContext.request.contextPath}/image/longyanlogo.png"/></a>
 
         </div>
         <div class="nav">
             <ul class="navbar">
-                <li><a href="/" data-act="home-click"  >首页</a></li>
-                <li><a href="/films" data-act="movies-click" >电影</a></li>
-                <li><a href="/cinemas" data-act="cinemas-click" >影院</a></li>
+                <li><a href="/" data-act="home-click">首页</a></li>
+                <li><a href="/films" data-act="movies-click">电影</a></li>
+                <li><a href="/cinemas" data-act="cinemas-click">影院</a></li>
                 <li><a href="http://www.gewara.com">演出</a></li>
 
-                <li><a href="/board" data-act="board-click" >榜单</a></li>
-                <li><a href="/news" data-act="hotNews-click" >热点</a></li>
-                <li><a href="/edimall"  >商城</a></li>
+                <li><a href="/board" data-act="board-click">榜单</a></li>
+                <li><a href="/news" data-act="hotNews-click">热点</a></li>
+                <li><a href="/edimall">商城</a></li>
             </ul>
         </div>
 
@@ -116,7 +153,7 @@
 <div class="header-placeholder"></div>
 
 
-<div class="container" id="app" class="page-cinemas/seat" >
+<div class="container" id="app" class="page-cinemas/seat">
     <div class="order-progress-bar">
         <div class="step first done">
             <span class="step-num">1</span>
@@ -159,7 +196,8 @@
             </div>
 
 
-            <div class="seats-block" data-cols="12" data-section-id="1" data-section-name="普通" data-seq-no="201912180213724">
+            <div class="seats-block" data-cols="12" data-section-id="1" data-section-name="普通"
+                 data-seq-no="201912180213724">
                 <div class="row-id-container">
                     <span class="row-id">1</span>
                     <span class="row-id">2</span>
@@ -1364,7 +1402,7 @@
             </div>
 
         </div>
-<%--        电影部分动态实现--%>
+        <%--        电影部分动态实现--%>
         <div class="side">
             <div class="movie-info clearfix">
                 <div class="poster">
@@ -1487,10 +1525,10 @@
     <div class="certificate">
         <a href="http://sq.ccm.gov.cn:80/ccnt/sczr/service/business/emark/toDetail/350CF8BCA8416C4FE0530140A8C0957E"
            target="_blank">
-            <img src="http://p0.meituan.net/moviemachine/e54374ccf134d1f7b2c5b075a74fca525326.png" />
+            <img src="http://p0.meituan.net/moviemachine/e54374ccf134d1f7b2c5b075a74fca525326.png"/>
         </a>
         <a href="/about/licence/5" target="_blank">
-            <img src="http://p1.meituan.net/moviemachine/805f605d5cf1b1a02a4e3a5e29df003b8376.png" />
+            <img src="http://p1.meituan.net/moviemachine/805f605d5cf1b1a02a4e3a5e29df003b8376.png"/>
         </a>
     </div>
 </div>
@@ -1505,7 +1543,7 @@
 </script>
 <!--<script crossorigin="anonymous" src="//s3plus.meituan.net/v1/mss_e2821d7f0cfe4ac1bf9202ecf9590e67/cdn-prod/file:5788b470/es5-shim.bbad933f.js"></script>-->
 <!--<script crossorigin="anonymous" src="//s3plus.meituan.net/v1/mss_e2821d7f0cfe4ac1bf9202ecf9590e67/cdn-prod/file:5788b470/es5-sham.d6ea26f4.js"></script>-->
-<script crossorigin="anonymous" src="${pageContext.request.contextPath}/js/seatNumber/xuanzuo.js"></script>
-<script crossorigin="anonymous" src="${pageContext.request.contextPath}/js/seatNumber/xuanzuo2.js"></script>
+<script crossorigin="anonymous" src="//s3plus.meituan.net/v1/mss_e2821d7f0cfe4ac1bf9202ecf9590e67/cdn-prod/file:5788b470/common.9d00a28e.js"></script>
+<script crossorigin="anonymous" src="//s3plus.meituan.net/v1/mss_e2821d7f0cfe4ac1bf9202ecf9590e67/cdn-prod/file:5788b470/cinemas-seat.ff61c305.js"></script>
 </body>
 </html>

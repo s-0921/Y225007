@@ -1,6 +1,9 @@
 package cn.service;
 
 import cn.entity.Actor;
+import cn.entity.ActorByFilm;
+
+import java.util.List;
 
 public interface ActorService {
 
@@ -21,4 +24,10 @@ public interface ActorService {
 
     //根据主键id更新整条信息
     public int changeByPrimaryKey(Actor record);
+
+
+
+    List<ActorByFilm> getByFilmId(Integer filmId);
+
+    List<Actor> getByIds(List<Integer> ids);
 }

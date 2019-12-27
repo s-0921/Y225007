@@ -1,46 +1,43 @@
 package cn.entity;
 
-/**
- * 实体类：地址类
- */
 public class Address {
-    private Integer aId;//编号
+    private Integer id;
 
-    private String aName;//地名
+    private String address;
 
-    private Integer priId;//父级地名编号
+    private Integer parentid;
 
-    public Address(Integer aId, String aName, Integer priId) {
-        this.aId = aId;
-        this.aName = aName;
-        this.priId = priId;
+    public Address(Integer id, String address, Integer parentid) {
+        this.id = id;
+        this.address = address;
+        this.parentid = parentid;
     }
 
     public Address() {
         super();
     }
 
-    public Integer getaId() {
-        return aId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setaId(Integer aId) {
-        this.aId = aId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getaName() {
-        return aName;
+    public String getAddress() {
+        return address;
     }
 
-    public void setaName(String aName) {
-        this.aName = aName == null ? null : aName.trim();
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
     }
 
-    public Integer getPriId() {
-        return priId;
+    public Integer getParentid() {
+        return parentid;
     }
 
-    public void setPriId(Integer priId) {
-        this.priId = priId;
+    public void setParentid(Integer parentid) {
+        this.parentid = parentid;
     }
 }

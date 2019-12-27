@@ -2,16 +2,20 @@ package cn.mapper;
 
 import cn.entity.Room;
 
+import java.util.List;
+
 public interface RoomMapper {
-    public int deleteByPrimaryKey(Integer roomId);
+    int deleteByPrimaryKey(Integer id);
 
-    public int insert(Room record);
+    int insert(Room record);
 
-    public int insertSelective(Room record);
+    int insertSelective(Room record);
 
-    public Room selectByPrimaryKey(Integer roomId);
+    Room selectByPrimaryKey(Integer id);
 
-    public int updateByPrimaryKeySelective(Room record);
+    int updateByPrimaryKeySelective(Room record);
 
-    public int updateByPrimaryKey(Room record);
+    int updateByPrimaryKey(Room record);
+
+    List<Room> selectAllByCinemaId(Integer cinemaId);
 }

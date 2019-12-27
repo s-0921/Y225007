@@ -1,90 +1,111 @@
 package cn.entity;
 
-/**
- * 电影院Bean
- */
+import java.util.List;
+
 public class Cinema {
-    private Integer cId;//编号
+    private Integer id;
 
-    private String cName;//名称
+    private String cinemaname;
 
-    private String cAddress;//所在地详细地址
+    private String address;
 
-    private String cPhone;//联系方式
+    private String tel;
 
-    private Integer aId;//地域编号
+    private Integer addressid;
 
-    private String cIntro;//简介
+    private String intro;
 
-    private String cImgUrl;//宣传图
+    private String imgurl;
 
-    public Cinema(Integer cId, String cName, String cAddress, String cPhone, Integer aId, String cIntro, String cImgUrl) {
-        this.cId = cId;
-        this.cName = cName;
-        this.cAddress = cAddress;
-        this.cPhone = cPhone;
-        this.aId = aId;
-        this.cIntro = cIntro;
-        this.cImgUrl = cImgUrl;
+    private List<Room> rooms;
+
+
+    public Cinema(Integer id, String cinemaname, String address, String tel, Integer addressid, String intro, String imgurl) {
+        this.id = id;
+        this.cinemaname = cinemaname;
+        this.address = address;
+        this.tel = tel;
+        this.addressid = addressid;
+        this.intro = intro;
+        this.imgurl = imgurl;
+    }
+
+    public Cinema(Integer id, String cinemaname, String address, String tel, Integer addressid, String intro, String imgurl, List<Room> rooms) {
+        this.id = id;
+        this.cinemaname = cinemaname;
+        this.address = address;
+        this.tel = tel;
+        this.addressid = addressid;
+        this.intro = intro;
+        this.imgurl = imgurl;
+        this.rooms = rooms;
     }
 
     public Cinema() {
         super();
     }
 
-    public Integer getcId() {
-        return cId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setcId(Integer cId) {
-        this.cId = cId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getcName() {
-        return cName;
+    public String getCinemaname() {
+        return cinemaname;
     }
 
-    public void setcName(String cName) {
-        this.cName = cName == null ? null : cName.trim();
+    public void setCinemaname(String cinemaname) {
+        this.cinemaname = cinemaname == null ? null : cinemaname.trim();
     }
 
-    public String getcAddress() {
-        return cAddress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setcAddress(String cAddress) {
-        this.cAddress = cAddress == null ? null : cAddress.trim();
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
     }
 
-    public String getcPhone() {
-        return cPhone;
+    public String getTel() {
+        return tel;
     }
 
-    public void setcPhone(String cPhone) {
-        this.cPhone = cPhone == null ? null : cPhone.trim();
+    public void setTel(String tel) {
+        this.tel = tel == null ? null : tel.trim();
     }
 
-    public Integer getaId() {
-        return aId;
+    public Integer getAddressid() {
+        return addressid;
     }
 
-    public void setaId(Integer aId) {
-        this.aId = aId;
+    public void setAddressid(Integer addressid) {
+        this.addressid = addressid;
     }
 
-    public String getcIntro() {
-        return cIntro;
+    public String getIntro() {
+        return intro;
     }
 
-    public void setcIntro(String cIntro) {
-        this.cIntro = cIntro == null ? null : cIntro.trim();
+    public void setIntro(String intro) {
+        this.intro = intro == null ? null : intro.trim();
     }
 
-    public String getcImgUrl() {
-        return cImgUrl;
+    public String getImgurl() {
+        return imgurl;
     }
 
-    public void setcImgUrl(String cImgUrl) {
-        this.cImgUrl = cImgUrl == null ? null : cImgUrl.trim();
+    public void setImgurl(String imgurl) {
+        this.imgurl = imgurl == null ? null : imgurl.trim();
+    }
+
+    public List<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(List<Room> rooms) {
+        this.rooms = rooms;
     }
 }

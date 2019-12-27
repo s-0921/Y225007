@@ -3,94 +3,103 @@
 <mapper namespace="cn.mapper.ActorMapper">
   <resultMap id="BaseResultMap" type="cn.entity.Actor">
     <constructor>
-      <idArg column="a_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="a_name" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="a_sex" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="a_address" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="a_birthday" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="actorName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="actorSex" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="address" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="born" javaType="java.util.Date" jdbcType="TIMESTAMP" />
     </constructor>
-
   </resultMap>
   <sql id="Base_Column_List">
-    a_id, a_name, a_sex, a_address, a_birthday
+    id, actorName, actorSex, address, born
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from t_actor
-    where a_id = #{aId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByIds" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_actor
+    where id in
+    <foreach collection="list" item="id" open="(" separator="," close=")">
+      #{id}
+    </foreach>
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_actor
-    where a_id = #{aId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.entity.Actor">
-    insert into t_actor (a_id, a_name, a_sex, 
-      a_address, a_birthday)
-    values (#{aId,jdbcType=INTEGER}, #{aName,jdbcType=VARCHAR}, #{aSex,jdbcType=VARCHAR}, 
-      #{aAddress,jdbcType=VARCHAR}, #{aBirthday,jdbcType=TIMESTAMP})
+    insert into t_actor (id, actorName, actorSex, 
+      address, born)
+    values (#{id,jdbcType=INTEGER}, #{actorname,jdbcType=VARCHAR}, #{actorsex,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{born,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="cn.entity.Actor">
     insert into t_actor
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="aId != null">
-        a_id,
+      <if test="id != null">
+        id,
       </if>
-      <if test="aName != null">
-        a_name,
+      <if test="actorname != null">
+        actorName,
       </if>
-      <if test="aSex != null">
-        a_sex,
+      <if test="actorsex != null">
+        actorSex,
       </if>
-      <if test="aAddress != null">
-        a_address,
+      <if test="address != null">
+        address,
       </if>
-      <if test="aBirthday != null">
-        a_birthday,
+      <if test="born != null">
+        born,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="aId != null">
-        #{aId,jdbcType=INTEGER},
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
       </if>
-      <if test="aName != null">
-        #{aName,jdbcType=VARCHAR},
+      <if test="actorname != null">
+        #{actorname,jdbcType=VARCHAR},
       </if>
-      <if test="aSex != null">
-        #{aSex,jdbcType=VARCHAR},
+      <if test="actorsex != null">
+        #{actorsex,jdbcType=VARCHAR},
       </if>
-      <if test="aAddress != null">
-        #{aAddress,jdbcType=VARCHAR},
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
       </if>
-      <if test="aBirthday != null">
-        #{aBirthday,jdbcType=TIMESTAMP},
+      <if test="born != null">
+        #{born,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="cn.entity.Actor">
     update t_actor
     <set>
-      <if test="aName != null">
-        a_name = #{aName,jdbcType=VARCHAR},
+      <if test="actorname != null">
+        actorName = #{actorname,jdbcType=VARCHAR},
       </if>
-      <if test="aSex != null">
-        a_sex = #{aSex,jdbcType=VARCHAR},
+      <if test="actorsex != null">
+        actorSex = #{actorsex,jdbcType=VARCHAR},
       </if>
-      <if test="aAddress != null">
-        a_address = #{aAddress,jdbcType=VARCHAR},
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
       </if>
-      <if test="aBirthday != null">
-        a_birthday = #{aBirthday,jdbcType=TIMESTAMP},
+      <if test="born != null">
+        born = #{born,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where a_id = #{aId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.entity.Actor">
     update t_actor
-    set a_name = #{aName,jdbcType=VARCHAR},
-      a_sex = #{aSex,jdbcType=VARCHAR},
-      a_address = #{aAddress,jdbcType=VARCHAR},
-      a_birthday = #{aBirthday,jdbcType=TIMESTAMP}
-    where a_id = #{aId,jdbcType=INTEGER}
+    set actorName = #{actorname,jdbcType=VARCHAR},
+      actorSex = #{actorsex,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      born = #{born,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
   </update>
+
 </mapper>

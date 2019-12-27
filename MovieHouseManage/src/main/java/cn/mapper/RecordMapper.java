@@ -1,17 +1,22 @@
 package cn.mapper;
 
 import cn.entity.Record;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface RecordMapper {
-    public int deleteByPrimaryKey(Integer rId);
+    int deleteByPrimaryKey(Integer id);
 
-    public int insert(Record record);
+    int insert(Record record);
 
-    public int insertSelective(Record record);
+    int insertSelective(Record record);
 
-    public Record selectByPrimaryKey(Integer rId);
+    Record selectByPrimaryKey(Integer id);
 
-    public int updateByPrimaryKeySelective(Record record);
+    int updateByPrimaryKeySelective(Record record);
 
-    public int updateByPrimaryKey(Record record);
+    int updateByPrimaryKey(Record record);
+
+    List<Record> selectByInfo(@Param("filmId")Integer filmId, @Param("cinemaId")Integer cinemaId, @Param("roomId")Integer roomId);
 }

@@ -1,21 +1,28 @@
 package cn.service;
 
 import cn.entity.Cinema;
+import cn.entity.Record;
+import cn.entity.Room;
+
+import java.util.List;
 
 public interface CinemaService {
 
-    //根据主键id删除
-    public int deleteByPrimaryKey(Integer cId);
+    List<Cinema> getAllCinema();
 
-    //新增电影院
-    public int insert(Cinema record);
+    List<Cinema> getCinemaByName(String name);
 
-    //新增
-    public int insertSelective(Cinema record);
+    List<Cinema> getCinemaByAddressId(Integer addressId);
 
-    public Cinema selectByPrimaryKey(Integer cId);
+    Integer addCinema(Cinema cinema);
 
-    public int updateByPrimaryKeySelective(Cinema record);
+    Cinema getById(Integer id);
 
-    public int updateByPrimaryKey(Cinema record);
+    List<Room> getAllRoomByCinemaId(Integer CinemaId);
+
+    Room getRoomById(Integer id);
+
+    Record getRecordById(Integer id);
+
+    List<Record> getByInfo(Integer filmId,Integer cinemaId,Integer roomId);
 }

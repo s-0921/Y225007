@@ -1,48 +1,43 @@
 package cn.mapper;
 
 import cn.entity.Film;
-import cn.entity.FilmImg;
 
+import javax.xml.crypto.Data;
+import java.util.Date;
 import java.util.List;
 
 public interface FilmMapper {
-    public int deleteByPrimaryKey(Integer fId);
+    int deleteByPrimaryKey(Integer id);
 
-    public int insert(Film record);
+    int insert(Film record);
 
-    public int insertSelective(Film record);
+    int insertSelective(Film record);
 
-    public Film selectByPrimaryKey(Integer fId);
+    Film selectByPrimaryKey(Integer id);
 
-    public int updateByPrimaryKeySelective(Film record);
+    int updateByPrimaryKeySelective(Film record);
 
-    public int updateByPrimaryKey(Film record);
+    int updateByPrimaryKey(Film record);
 
+    Film selectByName(String name);
 
-    //查询所有电影
-    public List<Film> selectAllFilm();
+    List<Film> selectAll();
 
-    //即将上映电影列表
-    public List<Film> selectByLessTime();
+    List<Film> selectByType(String type);
 
-    //正在热播电影列表
-    public List<Film> selectByGreaterTime();
+    List<Film> selectByArea(String area);
 
-    //查询票房榜（前10）
-    public List<Film> selectByOffice();
+    List<Film> selectByShowTime();
 
-    //查询期待榜（前50）
-    public List<Film> selectByExpectation();
+    List<Film> selectByLessTime();
 
-    //查询 top100（所有电影票房前100）
-    public List<Film> selectByTOP();
+    List<Film> selectByOffice();
 
-    //查询好评榜（前10）
-    public List<Film> selectByCount();
+    List<Film> selectByOffice_100();
 
-    //根据动态条件（上映时间，电影类型，区域，年代）查询电影列表
-    public List<Film> selectByCondition();
+    List<Film> selectByExpect();
 
-    //根据id查询电影所有信息（图集，演员。。。）
-    public List<Film> selectByFId(Integer fId);
+    List<Film> selectByScore();
+
+    List<Film> selectByCondition(String type,String area,String time);
 }

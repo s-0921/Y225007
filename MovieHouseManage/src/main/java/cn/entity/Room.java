@@ -1,79 +1,76 @@
 package cn.entity;
 
-/**
- * 放映厅信息Bean
- */
 public class Room {
-    private Integer roomId;//编号
+    private Integer id;
 
-    private String roomName;//放映厅名
+    private String roomname;
 
-    private String roomContent;//座位布局信息
+    private String seatfound;
 
-    private String roomType;//放映厅类型
+    private String roomtype;
 
-    private Integer roomNum;//座位数
+    private Integer seatnum;
 
-    private Integer cId;//影院编号
+    private Integer cinemaid;
 
-    public Room(Integer roomId, String roomName, String roomContent, String roomType, Integer roomNum, Integer cId) {
-        this.roomId = roomId;
-        this.roomName = roomName;
-        this.roomContent = roomContent;
-        this.roomType = roomType;
-        this.roomNum = roomNum;
-        this.cId = cId;
+    public Room(Integer id, String roomname, String seatfound, String roomtype, Integer seatnum, Integer cinemaid) {
+        this.id = id;
+        this.roomname = roomname;
+        this.seatfound = seatfound;
+        this.roomtype = roomtype;
+        this.seatnum = seatnum;
+        this.cinemaid = cinemaid;
     }
 
     public Room() {
         super();
     }
 
-    public Integer getRoomId() {
-        return roomId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setRoomId(Integer roomId) {
-        this.roomId = roomId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getRoomName() {
-        return roomName;
+    public String getRoomname() {
+        return roomname;
     }
 
-    public void setRoomName(String roomName) {
-        this.roomName = roomName == null ? null : roomName.trim();
+    public void setRoomname(String roomname) {
+        this.roomname = roomname == null ? null : roomname.trim();
     }
 
-    public String getRoomContent() {
-        return roomContent;
+    public String getSeatfound() {
+        return seatfound;
     }
 
-    public void setRoomContent(String roomContent) {
-        this.roomContent = roomContent == null ? null : roomContent.trim();
+    public void setSeatfound(String seatfound) {
+        this.seatfound = seatfound == null ? null : seatfound.trim();
     }
 
-    public String getRoomType() {
-        return roomType;
+    public String getRoomtype() {
+        return roomtype;
     }
 
-    public void setRoomType(String roomType) {
-        this.roomType = roomType == null ? null : roomType.trim();
+    public void setRoomtype(String roomtype) {
+        this.roomtype = roomtype == null ? null : roomtype.trim();
     }
 
-    public Integer getRoomNum() {
-        return roomNum;
+    public Integer getSeatnum() {
+        return seatnum;
     }
 
-    public void setRoomNum(Integer roomNum) {
-        this.roomNum = roomNum;
+    public void setSeatnum(Integer seatnum) {
+        this.seatnum = seatnum;
     }
 
-    public Integer getcId() {
-        return cId;
+    public Integer getCinemaid() {
+        return cinemaid;
     }
 
-    public void setcId(Integer cId) {
-        this.cId = cId;
+    public void setCinemaid(Integer cinemaid) {
+        this.cinemaid = cinemaid;
     }
 }

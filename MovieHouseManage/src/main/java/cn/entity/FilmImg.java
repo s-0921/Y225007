@@ -1,46 +1,43 @@
 package cn.entity;
 
-/**
- * 电影图片Bean
- */
 public class FilmImg {
-    private String id;//编号
+    private Integer id;
 
-    private String fImgUrl;//电影宣传图片
+    private String filmimgurl;
 
-    private Integer fId;//电影编号
+    private Integer filmid;
 
-    public FilmImg(String id, String fImgUrl, Integer fId) {
+    public FilmImg(Integer id, String filmimgurl, Integer filmid) {
         this.id = id;
-        this.fImgUrl = fImgUrl;
-        this.fId = fId;
+        this.filmimgurl = filmimgurl;
+        this.filmid = filmid;
     }
 
     public FilmImg() {
         super();
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getfImgUrl() {
-        return fImgUrl;
+    public String getFilmimgurl() {
+        return filmimgurl;
     }
 
-    public void setfImgUrl(String fImgUrl) {
-        this.fImgUrl = fImgUrl == null ? null : fImgUrl.trim();
+    public void setFilmimgurl(String filmimgurl) {
+        this.filmimgurl = filmimgurl == null ? null : filmimgurl.trim();
     }
 
-    public Integer getfId() {
-        return fId;
+    public Integer getFilmid() {
+        return filmid;
     }
 
-    public void setfId(Integer fId) {
-        this.fId = fId;
+    public void setFilmid(Integer filmid) {
+        this.filmid = filmid;
     }
 }

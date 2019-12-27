@@ -5,8 +5,8 @@
 
 <generatorConfiguration>
 
-    <!--导入属性配置-->
-    <properties resource="db.properties"></properties>
+    <!--导入属性配置
+    <properties resource="db.properties"></properties>-->
 
     <context id="default" targetRuntime="MyBatis3">
 
@@ -18,10 +18,10 @@
 
         <!--jdbc的数据库连接 -->
         <jdbcConnection
-                driverClass="${mysql.driver}"
-                connectionURL="${mysql.url}"
-                userId="${mysql.username}"
-                password="${mysql.password}">
+                driverClass="com.mysql.jdbc.Driver"
+                connectionURL="jdbc:mysql:///movie"
+                userId="root"
+                password="123456">
         </jdbcConnection>
 
 
@@ -64,33 +64,68 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-<<<<<<< HEAD
-=======
+
+
+        <table tableName="t_cinemaband" domainObjectName="CinemaBand"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <!--<table tableName="t_actorfilm" domainObjectName="ActorByFilm"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
         <table tableName="t_actorimg" domainObjectName="ActorImg"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
         </table>
-
-        <table tableName="t_Actor" domainObjectName="Actor"
+        <table tableName="t_address" domainObjectName="Address"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
         </table>
-
-        <table tableName="t_actorfilm" domainObjectName="ActorFilm"
+        <table tableName="t_cinema" domainObjectName="Cinema"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
         </table>
->>>>>>> 5d6f94762aae563a8b26af688b61dbb77b266d00
-
-
-        <table tableName="ticket" domainObjectName="Order"
+        <table tableName="t_film" domainObjectName="Film"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
         </table>
+        <table tableName="t_filmimg" domainObjectName="FilmImg"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table tableName="t_record" domainObjectName="Record"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table tableName="t_user" domainObjectName="User"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table tableName="t_room" domainObjectName="Room"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table tableName="t_order" domainObjectName="Order"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table tableName="t_orderItem" domainObjectName="OrderItem"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>-->
 
 
     </context>

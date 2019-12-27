@@ -1,7 +1,7 @@
 package cn.service;
 
 import cn.entity.Order;
-import cn.entity.Ticket;
+import cn.entity.OrderItem;
 import cn.entity.User;
 
 import java.util.List;
@@ -16,6 +16,8 @@ public interface UserService {
 
     Integer addOrder(Order order);
 
-    Integer addTicKet(Ticket ticket);
+    Integer addOrderItem(OrderItem orderItem);
+
+    Order getOrderByOrderId(Integer id);
 
 }

@@ -1,120 +1,124 @@
 package cn.entity;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
 public class Order {
-    private Integer oId;
+    private Integer id;
 
-    private Integer uId;
+    private Integer userid;
 
-    private Integer rId;
+    private Integer recordid;
 
-    private Integer seatNum;
+    private Integer seatnum;
 
-    private String seatInfo;
+    private String seatinfo;
 
-    private Double money;
+    private BigDecimal money;
 
     private Integer status;
 
-    private Date addTime;
+    private Date buytime;
 
-    private String oPhone;
+    private String phone;
 
-    private String ordernum;
+    private String orderNum;
 
-    private List<Ticket> tickets;
+    private List<OrderItem> itemList;
 
-    public Order(Integer oId, Integer uId, Integer rId, Integer seatNum, String seatInfo, Double money, Integer status, Date addTime, String oPhone, String ordernum) {
-        this.oId = oId;
-        this.uId = uId;
-        this.rId = rId;
-        this.seatNum = seatNum;
-        this.seatInfo = seatInfo;
+    public Order(Integer id, Integer userid, Integer recordid, Integer seatnum, String seatinfo, BigDecimal money, Integer status, Date buytime, String phone, String orderNum) {
+        this.id = id;
+        this.userid = userid;
+        this.recordid = recordid;
+        this.seatnum = seatnum;
+        this.seatinfo = seatinfo;
         this.money = money;
         this.status = status;
-        this.addTime = addTime;
-        this.oPhone = oPhone;
-        this.ordernum = ordernum;
+        this.buytime = buytime;
+        this.phone = phone;
+        this.orderNum = orderNum;
     }
 
-    public Order(Integer uId, Integer rId, Integer seatNum, String seatInfo, Double money, Integer status, Date addTime, String oPhone, String ordernum, List<Ticket> tickets) {
-        this.uId = uId;
-        this.rId = rId;
-        this.seatNum = seatNum;
-        this.seatInfo = seatInfo;
+
+
+    public Order(Integer id, Integer userid, Integer recordid, Integer seatnum, String seatinfo, BigDecimal money, Integer status, Date buytime, String phone , String orderNum, List<OrderItem> itemList) {
+        this.id = id;
+        this.userid = userid;
+        this.recordid = recordid;
+        this.seatnum = seatnum;
+        this.seatinfo = seatinfo;
         this.money = money;
         this.status = status;
-        this.addTime = addTime;
-        this.oPhone = oPhone;
-        this.ordernum = ordernum;
-        this.tickets = tickets;
+        this.buytime = buytime;
+        this.phone = phone;
+        this.orderNum = orderNum;
+        this.itemList = itemList;
     }
 
-    public Order(Integer oId, Integer uId, Integer rId, Integer seatNum, String seatInfo, Double money, Integer status, Date addTime, String oPhone, String ordernum, List<Ticket> tickets) {
-        this.oId = oId;
-        this.uId = uId;
-        this.rId = rId;
-        this.seatNum = seatNum;
-        this.seatInfo = seatInfo;
+    public Order(Integer userid, Integer recordid, Integer seatnum, String seatinfo, BigDecimal money, Integer status, Date buytime, String phone, String orderNum) {
+        this.userid = userid;
+        this.recordid = recordid;
+        this.seatnum = seatnum;
+        this.seatinfo = seatinfo;
         this.money = money;
         this.status = status;
-        this.addTime = addTime;
-        this.oPhone = oPhone;
-        this.ordernum = ordernum;
-        this.tickets = tickets;
+        this.buytime = buytime;
+        this.phone = phone;
+        this.orderNum = orderNum;
     }
 
     public Order() {
-
+        super();
     }
 
-    public Integer getoId() {
-        return oId;
+
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setoId(Integer oId) {
-        this.oId = oId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Integer getuId() {
-        return uId;
+    public Integer getUserid() {
+        return userid;
     }
 
-    public void setuId(Integer uId) {
-        this.uId = uId;
+    public void setUserid(Integer userid) {
+        this.userid = userid;
     }
 
-    public Integer getrId() {
-        return rId;
+    public Integer getRecordid() {
+        return recordid;
     }
 
-    public void setrId(Integer rId) {
-        this.rId = rId;
+    public void setRecordid(Integer recordid) {
+        this.recordid = recordid;
     }
 
-    public Integer getSeatNum() {
-        return seatNum;
+    public Integer getSeatnum() {
+        return seatnum;
     }
 
-    public void setSeatNum(Integer seatNum) {
-        this.seatNum = seatNum;
+    public void setSeatnum(Integer seatnum) {
+        this.seatnum = seatnum;
     }
 
-    public String getSeatInfo() {
-        return seatInfo;
+    public String getSeatinfo() {
+        return seatinfo;
     }
 
-    public void setSeatInfo(String seatInfo) {
-        this.seatInfo = seatInfo == null ? null : seatInfo.trim();
+    public void setSeatinfo(String seatinfo) {
+        this.seatinfo = seatinfo == null ? null : seatinfo.trim();
     }
 
-    public Double getMoney() {
+    public BigDecimal getMoney() {
         return money;
     }
 
-    public void setMoney(Double money) {
+    public void setMoney(BigDecimal money) {
         this.money = money;
     }
 
@@ -126,35 +130,52 @@ public class Order {
         this.status = status;
     }
 
-    public Date getAddTime() {
-        return addTime;
+    public Date getBuytime() {
+        return buytime;
     }
 
-    public void setAddTime(Date addTime) {
-        this.addTime = addTime;
+    public void setBuytime(Date buytime) {
+        this.buytime = buytime;
     }
 
-    public String getoPhone() {
-        return oPhone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setoPhone(String oPhone) {
-        this.oPhone = oPhone;
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
     }
 
-    public String getOrdernum() {
-        return ordernum;
+    public String getOrderNum() {
+        return orderNum;
     }
 
-    public void setOrdernum(String ordernum) {
-        this.ordernum = ordernum == null ? null : ordernum.trim();
+    public void setOrderNum(String orderNum) {
+        this.orderNum = orderNum;
     }
 
-    public List<Ticket> getTickets() {
-        return tickets;
+    public List<OrderItem> getItemList() {
+        return itemList;
     }
 
-    public void setTickets(List<Ticket> tickets) {
-        this.tickets = tickets;
+    public void setItemList(List<OrderItem> itemList) {
+        this.itemList = itemList;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", userid=" + userid +
+                ", recordid=" + recordid +
+                ", seatnum=" + seatnum +
+                ", seatinfo='" + seatinfo + '\'' +
+                ", money=" + money +
+                ", status=" + status +
+                ", buytime=" + buytime +
+                ", phone='" + phone + '\'' +
+                ", orderNum='" + orderNum + '\'' +
+                ", itemList=" + itemList +
+                '}';
     }
 }

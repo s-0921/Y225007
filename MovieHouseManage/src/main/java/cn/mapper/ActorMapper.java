@@ -2,16 +2,20 @@ package cn.mapper;
 
 import cn.entity.Actor;
 
+import java.util.List;
+
 public interface ActorMapper {
-    public int deleteByPrimaryKey(Integer aId);
+    int deleteByPrimaryKey(Integer id);
 
-    public int insert(Actor record);
+    int insert(Actor record);
 
-    public int insertSelective(Actor record);
+    int insertSelective(Actor record);
 
-    public Actor selectByPrimaryKey(Integer aId);
+    Actor selectByPrimaryKey(Integer id);
 
-    public int updateByPrimaryKeySelective(Actor record);
+    List<Actor> selectByIds(List<Integer> ids);
 
-    public int updateByPrimaryKey(Actor record);
+    int updateByPrimaryKeySelective(Actor record);
+
+    int updateByPrimaryKey(Actor record);
 }

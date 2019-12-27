@@ -12,7 +12,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>龙眼Film</title>
+    <title>龙眼Film Main</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -23,7 +23,7 @@
 <div id="header" style=" margin-left: 100px">
     <ul class="layui-nav " style=" background: white;" >
         <li class="layui-nav-item ">
-            <a href=""><img src="${pageContext.request.contextPath}/image/longyanlogo.png"/> </a>
+            <a href=""><img src="${pageContext.request.contextPath}/movieImg/image/longyanlogo.png"/> </a>
         </li>
         <li class="layui-nav-item">
             <a href="javascript:;"  style="color: #0C0C0C">
@@ -33,9 +33,7 @@
                 <c:forEach begin="1" end="100" varStatus="i">
                     <dd ><a href="">市区</a></dd>
                 </c:forEach>
-
             </dl>
-        </li>
         </li>
 
         <li class="layui-nav-item ">
@@ -56,22 +54,17 @@
         <li class="layui-nav-item ">
             <a href=""style="color: #0C0C0C">热点</a>
         </li>
-        <li class="layui-nav-item ">
+        <li class="layui-nav-item " style="margin-right: 400px">
             <a href=""style="color: #0C0C0C">商城</a>
         </li>
-        <li class="layui-nav-item ">
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </li>
+
         <li class="layui-nav-item">
             <c:if test="${user eq null or user eq ''}">
                 <a href="javascript:; " style="color: #0C0C0C">
                     <img src="https://p0.meituan.net/movie/7dd82a16316ab32c8359debdb04396ef2897.png" class="layui-nav-img">
                 </a>
                 <dl class="layui-nav-child">
-                    <dd><a href="${pageContext.request.contextPath}/loginUser">登录</a></dd>
+                    <dd><a href="${pageContext.request.contextPath}/loginUI">登录</a></dd>
                 </dl>
             </c:if>
             <c:if test="${user ne null and user ne ''}">
@@ -84,14 +77,12 @@
         </li>
     </ul>
 </div>
-<div class="layui-carousel" id="test1"  style="background:#eb7350;">
 
-    <div carousel-item style="width: 90% ;margin-left: 75px;margin-bottom: 30px">
-        <div style="background:#00F7DE" >条目1</div>
-        <div style="background: #eb7350">条目2</div>
-        <div style="background: #00FFFF">条目3</div>
-        <div style="background: #0000FF">条目4</div>
-        <div style="background: #00FF00">条目5</div>
+<div class="layui-carousel" id="test1" >
+
+    <div carousel-item  style="width: 95%;margin-left: 40px;height:350px ">
+        <img src="${pageContext.request.contextPath}/movieImg/filmImg/bangexiju.PNG"/>
+        <img src="${pageContext.request.contextPath}/movieImg/filmImg/bangxijunv.PNG"/>
     </div>
 </div>
 <br>
@@ -110,12 +101,12 @@
                 <a style="font-size: 15px;color:#FF5722">全部 ></a></h1>
 
            <ul class="film" style="margin-bottom: 20px">
-               <c:forEach begin="0" end="7">
+               <c:forEach var="showtime" items="${showTimes}">
                    <li style="margin-right: 20px;margin-bottom:20px">
-                       <img width="200px" height="240px"/>
-                       <div style="text-align: center">
-                           <span style="display:block">电影名</span>
-                           <a style="font-size: 25px;color: #eb7350">购票</a>
+                       <img src="${pageContext.request.contextPath}/${showtime.posterurl}" style=" width:190px; height:270px"/>
+                       <div class="buyTicket" style="text-align: center">
+                           <span style="display:block">${showtime.filmname}</span>
+                           <a href="${pageContext.request.contextPath}/film/filmInfo?filmName=${showtime.filmname}" style="font-size: 25px;color: #eb7350">购票</a>
                        </div>
                    </li>
                </c:forEach>
@@ -125,40 +116,40 @@
         <div class="layui-col-md4">
             <h1 style="color: #FF5722">今日票房</h1>
             <ul style="margin-top: 20px">
-                <c:forEach begin="1" end="10" varStatus="i">
+                <c:forEach items="${offices}" var="office" varStatus="i">
 
-                    <c:if test="${i.index ==1}">
+                    <c:if test="${i.index ==0}">
                         <li style="background: #D0D0D0;">
                             <img style="height: 80px;width: 100px">
                             <div style="display: inline-block">
-                                <a style="font-size: 25px;">电影名</a>
-                                <p style="color: #FF5722">播放量</p>
+                                <a style="font-size: 25px;">${office.filmname}</a>
+                                <p style="color: #FF5722">${office.boxoffice}亿</p>
                             </div>
                         </li>
                     </c:if>
-                    <c:if test="${i.index ==2}">
+                    <c:if test="${i.index ==1}">
                         <li style="height: 25px;padding: 10px 0px;margin: 5px 1px">
-                            <span style="font-size: 27px;color: #eb7350 ;font-weight: bold">${i.index}</span>
+                            <span style="font-size: 27px;color: #eb7350 ;font-weight: bold">${i.index+1}</span>
                             &nbsp; &nbsp;
-                            <a style="font-size: 25px">电影名</a>
-                            <a style="color:#eb7350;width: 400px;border: #eb7350 1px solid">票房量</a>
+                            <a style="font-size: 23px">${office.filmname}</a>
+                            <a style="color:#FFFF00;border:#FFFF00 1px solid">${office.boxoffice}亿</a>
                         </li>
 
                     </c:if>
-                    <c:if test="${i.index ==3}">
+                    <c:if test="${i.index ==2}">
                         <li style="height: 25px;padding: 10px 0px;margin: 5px 1px">
-                            <span style="font-size: 25px;color: #eb7350 ;">${i.index}</span>
+                            <span style="font-size: 25px;color: #eb7350 ;">${i.index+1}</span>
                             &nbsp; &nbsp;
-                            <a style="font-size: 23px">电影名</a>
-                            <a style="color:#eb7350;width: 400px;border: #eb7350 1px solid">票房量</a>
+                            <a style="font-size: 23px">${office.filmname}</a>
+                            <a style="color:#FFFF00;border:#FFFF00 1px solid">${office.boxoffice}亿</a>
                         </li>
                     </c:if>
                     <c:if test="${i.index >3}">
                         <li style="height: 25px;padding: 10px 0px;margin: 5px 1px">
-                            <span style="font-size: 21px;color: #c0c4cc">${i.index}</span>
+                            <span style="font-size: 21px;color: #c0c4cc">${i.index+1}</span>
                             &nbsp; &nbsp;
-                            <a style="font-size: 20px">电影名</a>
-                            <a style="color:#eb7350;border: #eb7350 1px solid">票房量</a>
+                            <a style="font-size: 23px">${office.filmname}</a>
+                            <a style="color:#FFFF00;border:#FFFF00 1px solid">${office.boxoffice}亿</a>
                         </li>
                     </c:if>
                 </c:forEach>
@@ -182,10 +173,13 @@
                 <a style="font-size: 15px;color:#1E9FFF">全部 ></a></h1>
 
             <ul class="film" style="margin-bottom: 20px" >
-                <c:forEach begin="0" end="7">
-                    <li style="margin-right: 20px;margin-bottom:20px">
-                        <img width="200px" height="240px"/>
-                        <div style="text-align: center"><a style="font-size: 25px;color: #eb7350">购票</a></div>
+                <c:forEach items="${lessTimes}" var="lessTime">
+                    <li style="margin-right: 20px;margin-bottom:20px;">
+                        <img src="${pageContext.request.contextPath}/${lessTime.posterurl}" style=" width:190px; height:270px"/>
+                        <div class="buyTicket" style="text-align: center;padding-top: 10px">
+                            <span style="display:block">${lessTime.filmname}</span>
+                            <a href="${pageContext.request.contextPath}/filmInfo" style="font-size: 25px;color: #eb7350">预售</a>
+                          </div>
                     </li>
                 </c:forEach>
             </ul>
@@ -194,42 +188,42 @@
         <div class="layui-col-md4">
             <h1 style="color: #FFFF00">最受期待</h1>
             <ul style="margin-top: 20px">
-                <c:forEach begin="1" end="10" varStatus="i">
+                <c:forEach varStatus="i" items="${expects}" var="expect">
 
-                        <c:if test="${i.index ==1}">
+                        <c:if test="${i.index ==0}">
                             <li style="background: #D0D0D0;">
                                 <img style="height: 80px;width: 100px">
                                 <div style="display: inline-block">
-                                    <a style="font-size: 25px;">电影名</a>
-                                    <p style="color: #FFFF00">多少人想看</p>
+                                    <a style="font-size: 25px;">${expect.filmname}</a>
+                                    <p style="color: #FFFF00">${expect.expect}万人想看</p>
                                 </div>
                             </li>
                         </c:if>
-                        <c:if test="${i.index ==2}">
+                        <c:if test="${i.index ==1}">
                             <li style="height: 25px;padding: 10px 0px;margin: 5px 1px">
-                                <span style="font-size: 27px;color: #eb7350 ;font-weight: bold">${i.index}</span>
+                                <span style="font-size: 27px;color: #eb7350 ;font-weight: bold">${i.index+1}</span>
                                 &nbsp; &nbsp;
-                                <a style="font-size: 25px;">电影名</a>
-                                <a style="color:#FFFF00;border: #FFFF00 1px solid">多少人想看</a>
+                                <a style="font-size: 25px;">${expect.filmname}</a>
+                                <a style="color:#FFFF00;border: #FFFF00 1px solid">${expect.expect}万人想看</a>
 
                             </li>
 
                         </c:if>
-                        <c:if test="${i.index ==3}">
+                        <c:if test="${i.index ==2}">
                             <li style="height: 25px;padding: 10px 0px;margin: 5px 1px">
-                                <span style="font-size: 25px;color: #eb7350 ">${i.index}</span>
+                                <span style="font-size: 25px;color: #eb7350 ">${i.index+1}</span>
                                 &nbsp; &nbsp;
-                                <a style="font-size: 23px">电影名</a>
-                                <a style="color:#FFFF00;border:#FFFF00 1px solid">多少人想看</a>
+                                <a style="font-size: 25px;">${expect.filmname}</a>
+                                <a style="color:#FFFF00;border: #FFFF00 1px solid">${expect.expect}万人想看</a>
 
                             </li>
                         </c:if>
                         <c:if test="${i.index >3}">
                             <li style="height: 25px;padding: 10px 0px;margin: 5px 1px">
-                                <span style="font-size: 21px;color: #c0c4cc">${i.index}</span>
+                                <span style="font-size: 21px;color: #c0c4cc">${i.index+1}</span>
                                 &nbsp; &nbsp;
-                                <a style="font-size: 23px">电影名</a>
-                                <a style="color: #FFFF00;border: #FFFF00 1px solid">多少人想看</a>
+                                <a style="font-size: 25px;">${expect.filmname}</a>
+                                <a style="color:#FFFF00;border: #FFFF00 1px solid">${expect.expect}万人想看</a>
 
                             </li>
                         </c:if>
@@ -254,10 +248,13 @@
                 <a style="font-size: 15px;color: #FF5722">全部 ></a></h1>
 
             <ul class="film" style="margin-bottom: 20px" >
-                <c:forEach begin="0" end="7">
+                <c:forEach var="showtime" items="${showTimes}">
                     <li style="margin-right: 20px;margin-bottom:20px">
-                        <img width="200px" height="240px"/>
-                        <div style="text-align: center"><a style="font-size: 25px;color: #eb7350">购票</a></div>
+                        <img src="${pageContext.request.contextPath}/${showtime.posterurl}" style=" width:190px; height:270px"/>
+                        <div class="buyTicket" style="text-align: center">
+                            <span style="display:block">${showtime.filmname}</span>
+                            <a href="${pageContext.request.contextPath}/filmInfo" style="font-size: 25px;color: #eb7350">购票</a>
+                        </div>
                     </li>
                 </c:forEach>
             </ul>
@@ -266,40 +263,40 @@
         <div class="layui-col-md4">
             <h1 style="color:#FFFF00">TOP 100</h1>
             <ul style="margin-top: 20px">
-                <c:forEach begin="1" end="10" varStatus="i">
+                <c:forEach varStatus="i" items="${scores}" var="score">
 
-                    <c:if test="${i.index ==1}">
+                    <c:if test="${i.index ==0}">
                         <li style="background: #D0D0D0;">
                             <img style="height: 80px;width: 100px">
                             <div style="display: inline-block">
-                                <a style="font-size: 25px;">电影名</a>
-                                <p style="color: #FFFF00">评分</p>
+                                <a style="font-size: 25px;">${score.filmname}</a>
+                                <p style="color: #FFFF00">${score.filmscore}</p>
                             </div>
                         </li>
                     </c:if>
-                    <c:if test="${i.index ==2}">
+                    <c:if test="${i.index ==1}">
                         <li style="height: 25px;padding: 10px 0px;margin: 5px 1px">
-                            <span style="font-size: 27px;color: #eb7350 ;font-weight: bold">${i.index}</span>
+                            <span style="font-size: 27px;color: #eb7350 ;font-weight: bold">${i.index+1}</span>
                             &nbsp; &nbsp;
-                            <a style="font-size: 25px;">电影名</a>
-                            <a style="color:#FFFF00;border: #FFFF00 1px solid">评分</a>
+                            <a style="font-size: 25px;">${score.filmname}</a>
+                            <a style="color:#FFFF00;border: #FFFF00 1px solid">${score.filmscore}</a>
                         </li>
 
                     </c:if>
-                    <c:if test="${i.index ==3}">
+                    <c:if test="${i.index ==2}">
                         <li style="height: 25px;padding: 10px 0px;margin: 5px 1px">
-                            <span style="font-size: 25px;color: #eb7350 ">${i.index}</span>
+                            <span style="font-size: 25px;color: #eb7350 ">${i.index+1}</span>
                             &nbsp; &nbsp;
-                            <a style="font-size: 25px;">电影名</a>
-                            <a style="color:#FFFF00;border: #FFFF00 1px solid">评分</a>
+                            <a style="font-size: 25px;">${score.filmname}</a>
+                            <a style="color:#FFFF00;border: #FFFF00 1px solid">${score.filmscore}</a>
                         </li>
                     </c:if>
                     <c:if test="${i.index >3}">
                         <li style="height: 25px;padding: 10px 0px;margin: 5px 1px">
-                            <span style="font-size: 21px;color: #c0c4cc">${i.index}</span>
+                            <span style="font-size: 21px;color: #c0c4cc">${i.index+1}</span>
                             &nbsp; &nbsp;
-                            <a style="font-size: 25px;">电影名</a>
-                            <a style="color:#FFFF00;border: #FFFF00 1px solid">评分</a>
+                            <a style="font-size: 25px;">${score.filmname}</a>
+                            <a style="color:#FFFF00;border: #FFFF00 1px solid">${score.filmscore}</a>
                         </li>
                     </c:if>
                 </c:forEach>
@@ -382,7 +379,7 @@
 </div>
 
 <script src="${pageContext.request.contextPath}/layui/layui.js" charset="utf-8"></script>
-    <script src="${pageContext.request.contextPath}/js/jquery-1.12.4.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-1.12.4.js"></script>
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 
     <script>
@@ -400,7 +397,11 @@
     <script>
         $(function () {
             $("ul.film li").css("display"," inline-block")
-
+            $(".buyTicket").hover(function () {
+                $(this).css("background","#D0D0D0")
+            }).mouseleave(function () {
+                $(this).css("background","white")
+            })
         })
     </script>
 <script>

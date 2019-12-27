@@ -5,13 +5,17 @@ import cn.entity.FilmImg;
 import java.util.List;
 
 public interface FilmImgMapper {
-    public void insert(FilmImg record);
+    int deleteByPrimaryKey(Integer id);
 
-    public void insertSelective(FilmImg record);
+    int insert(FilmImg record);
 
-    //根据id查询电影图集
-    public List<FilmImg> selectByFilmId(Integer fId);
+    int insertSelective(FilmImg record);
 
-    //删除图片
-    public void deleteById(Integer id);
+    FilmImg selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(FilmImg record);
+
+    int updateByPrimaryKey(FilmImg record);
+
+    List<FilmImg> selectByFilmId(Integer filmId);
 }

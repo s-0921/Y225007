@@ -12,11 +12,11 @@
     <title>Title</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/layui/css/layui.css" media="all">
 </head>
-<body>
-<div id="header" style=" margin-left: 100px">
+<body style="margin: auto 0px">
+<div id="header" style=" margin-left: 100px ">
     <ul class="layui-nav " style=" background: white;" >
         <li class="layui-nav-item ">
-            <a href=""><img src="${pageContext.request.contextPath}/image/longyanlogo.png"/> </a>
+            <a href=""><img src="${pageContext.request.contextPath}/movieImg/image/longyanlogo.png"/> </a>
         </li>
         <li class="layui-nav-item">
             <a href="javascript:;"  style="color: #0C0C0C">
@@ -27,7 +27,6 @@
                     <dd><a href="">${i.index}</a></dd>
                 </c:forEach>
             </dl>
-        </li>
         </li>
 
         <li class="layui-nav-item ">
@@ -48,21 +47,14 @@
         <li class="layui-nav-item ">
             <a href=""style="color: #0C0C0C">热点</a>
         </li>
-        <li class="layui-nav-item ">
+        <li class="layui-nav-item "style="margin-right: 400px">
             <a href=""style="color: #0C0C0C">商城</a>
         </li>
-        <li class="layui-nav-item ">
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </li>
-        <li class="layui-nav-item">
-
-
+        <li class="layui-nav-item" >
             <c:if test="${user eq null or user eq ''}">
                 <a href="javascript:; " style="color: #0C0C0C">
                     <img src="https://p0.meituan.net/movie/7dd82a16316ab32c8359debdb04396ef2897.png" class="layui-nav-img">
+                    &nbsp;
                 </a>
                 <dl class="layui-nav-child">
                     <dd><a href="${pageContext.request.contextPath}/loginUser">登录</a></dd>
@@ -77,6 +69,9 @@
             </c:if>
         </li>
     </ul>
+</div>
+<div style="background: #4E5465;text-align: center;height: 40px ;padding-top: 20px" class="film_title">
+
 </div>
 <br>
 <br>
@@ -136,15 +131,14 @@
     <%--放电影的内容--%>
     <ul class="cinema" style="margin-bottom: 20px">
         <span style="display: none"> 查询的总电影院总数Count</span>
-        <c:forEach begin="0" end="20">
+        <c:forEach items="${cinemas}" var="cinema">
             <li style=";margin-left: 20px;margin-bottom:20px;border-bottom: #D0D0D0 1px dashed;padding-bottom: 20px">
                 <div style="width: 50%;display:inline-block;padding: 10px">
-                    <h3>电影院名称</h3>
-                    <h4 style="color: #9F9F9F">电影院具体地址*********************</h4>
+                    <h3>${cinema.cinemaname}</h3>
+                    <h4 style="color: #9F9F9F">电影院具体地址:${cinema.address}</h4>
                 </div>
                 <div style="width: 45%;display:inline-block; padding: 10px 0px;text-align: right">
-                    <span style="color: #FF5722;font-size: 18px;">¥价格</span>起
-                    <span style="font-size: 15px;margin-left: 20px ;background: #FF5722 ;padding: 10px 15px;border-radius: 15px;">选择座位</span>
+                    <a style="font-size: 15px;margin-left: 20px ;background: #FF5722 ;padding: 10px 15px;border-radius: 15px;" href="${pageContext.request.contextPath}/film/recordInfo?cinemaId=${cinema.id}">选择座位</a>
                 </div>
 
             </li>

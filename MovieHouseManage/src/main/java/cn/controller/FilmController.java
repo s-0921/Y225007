@@ -1,7 +1,10 @@
 package cn.controller;
 
-import cn.entity.Film;
+import cn.entity.*;
+import cn.service.ActorService;
+import cn.service.CinemaService;
 import cn.service.FilmService;
+import cn.utils.DateUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,36 +12,83 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.servlet.http.HttpSession;
+import java.util.*;
 
 @Controller
 @RequestMapping(value = "/film")
-@SessionAttributes(value = {"allFilm"})
+@SessionAttributes(value = {"showTimes","lessTimes","offices","expects","scores","filmON","records","cinemaId"})
 public class FilmController {
 
     @Autowired
     private FilmService filmService;
-
+    @Autowired
+    private CinemaService cinemaService;
+    @Autowired
+    private ActorService actorService;
     //查看一部电影的详细信息（图集，演员。。。）
     @RequestMapping("/filmInfo")
-    public String filmInfo(Model model,Integer fId){
-
-        Film film=filmService.queryByPrimaryKey(fId);
-        model.addAttribute(film);
-        return "";
+    public String filmInfo(Model model,String filmName){
+        Film film=filmService.getFilmByName(filmName);
+        model.addAttribute("filmON",film);
+        String time = DateUtil.getNowFormat(film.getShowtime());
+        model.addAttribute("showTime",time);
+        List<Cinema> cinemas = cinemaService.getAllCinema();
+        model.addAttribute("cinemas",cinemas);
+        return "Filminfo";
     }
 
+    @RequestMapping("/cinemaInfo")
+    public String cinemaInfo(Model model){
+        List<Cinema> cinemas = cinemaService.getAllCinema();
+        model.addAttribute("cinemas",cinemas);
+        return "ChooseCinema";
+    }
+    @RequestMapping("/recordInfo")
+    public String recordInfo(Integer cinemaId, Model model, HttpSession session){
+        Film film = (Film) session.getAttribute("filmON");
+        Integer filmId = film.getId();
+        List<Record> records = cinemaService.getByInfo(filmId,cinemaId,null);
+        Cinema cinema = cinemaService.getById(cinemaId);
+        List<ActorByFilm> afs = actorService.getByFilmId(filmId);
+        if(afs.size()>0){
+            List<Integer> ids = new ArrayList<Integer>();
+            for (ActorByFilm actorByFilm:afs) {
+                ids.add(actorByFilm.getActorid());
+            }
+            List<Actor> actors = actorService.getByIds(ids);
+            model.addAttribute("actors",actors);
+        }
+        model.addAttribute("records",records);
+        model.addAttribute("cinemaId",cinemaId);
+        model.addAttribute("cinema",cinema);
+        return "CinemaInfo";
+    }
+
+    @RequestMapping("/main")
+    public String getMain(Model model){
+        List<Film> showTimes = filmService.getFilmByShowTime();
+        model.addAttribute("showTimes",showTimes);
+        List<Film> lessTimes = filmService.getFilmByLessTime();
+        model.addAttribute("lessTimes",lessTimes);
+        List<Film> offices = filmService.getByOffice();
+        model.addAttribute("offices",offices);
+        List<Film> expects = filmService.getByExpect();
+        model.addAttribute("expects",expects);
+        List<Film> scores = filmService.getByScore();
+        model.addAttribute("scores",scores);
+        return "FilmMain";
+    }
 
 
     //所有电影列表
     @RequestMapping("/allFilm")
     public void allFilm(Model model){
 
-        List<Film> allFilm=filmService.queryAllFilm();
+        List<Film> allFilm=filmService.getAllFilm();
         model.addAttribute(allFilm);
 
         Map<String,Object> map=new HashMap<String, Object>();
@@ -50,7 +100,7 @@ public class FilmController {
     @RequestMapping("/hitFilmList")
     public String hitFilmList(Model model){
 
-        List<Film> hitFilmList = filmService.queryByGreaterTime();
+        List<Film> hitFilmList = filmService.getFilmByShowTime();
         model.addAttribute("hitFilmList",hitFilmList);
         return "";
     }
@@ -58,7 +108,7 @@ public class FilmController {
     //即将上映电影列表
     @RequestMapping("/upcomingFilmList")
     public String upcomingFilmList(Model model){
-        List<Film> upcomingFilmList = filmService.queryByLessTime();
+        List<Film> upcomingFilmList = filmService.getFilmByLessTime();
         model.addAttribute("upcomingFilmList",upcomingFilmList);
         return "";
     }
@@ -66,7 +116,7 @@ public class FilmController {
     //查询票房榜（前10）
     @RequestMapping("/boxOffice")
     public String boxOffice(Model model){
-        List<Film> upcomingFilmList = filmService.queryByOffice();
+        List<Film> upcomingFilmList = filmService.getByOffice();
         model.addAttribute("upcomingFilmList",upcomingFilmList);
         return "";
     }
@@ -74,28 +124,28 @@ public class FilmController {
     //查询期待榜（前50）
     @RequestMapping("/boxExpectation")
     public String boxExpectation(Model model){
-        List<Film> upcomingFilmList = filmService.queryByExpectation();
+        List<Film> upcomingFilmList = filmService.getByExpect();
         model.addAttribute("upcomingFilmList",upcomingFilmList);
         return "";
     }
     //查询 top100（所有电影票房前100）
     @RequestMapping("/top")
     public String top(Model model){
-        List<Film> upcomingFilmList = filmService.queryByTOP();
+        List<Film> upcomingFilmList = filmService.getByOffice_100();
         model.addAttribute("upcomingFilmList",upcomingFilmList);
         return "";
     }
     //查询好评榜（前10）
     @RequestMapping("/boxScore")
     public String boxScore(Model model){
-        List<Film> upcomingFilmList = filmService.queryByCount();
+        List<Film> upcomingFilmList = filmService.getByScore();
         model.addAttribute("upcomingFilmList",upcomingFilmList);
         return "";
     }
 
     /*
      * 动态条件查询电影数据（分页查询）
-     */
+    */
     @RequestMapping("/films")
     public String getFilms(@RequestParam(value="pn",defaultValue="1")Integer pn, Model model){
 
@@ -103,7 +153,7 @@ public class FilmController {
         //查询之前需要调用,,传入页码，以及每页的大小
         PageHelper.startPage(pn,5);
         //startPage后面紧跟的是这个查询就是一个分页查询
-        List<Film> emps = filmService.queryByCondition();
+        List<Film> emps = filmService.getAllFilm();
         //使用pageInfo包装查询后的结果，只需要将Pageinfo交给页面就行了
         //封装了详细的分页信息，包括我们查出来的数据,传入连续显示的数据
         PageInfo page = new PageInfo(emps,5);

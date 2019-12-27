@@ -2,73 +2,65 @@ package cn.entity;
 
 import java.util.Date;
 
-/**
- * 用户Bean
- */
 public class User {
-    private Integer uIdu;//编号
+    private Integer id;
 
-    private String uName;//昵称
+    private String username;
 
-    private String uPwd;//密码
+    private String pwd;
 
-    private String uSex;//性别
+    private String sex;
 
-    private Date birthday;//生日
+    private Date birthday;
 
-    private String animation;//生活状态
+    private String animation;
 
-    private String uPhone;//联系方式
+    private String phone;
 
-    public User(Integer uIdu, String uName, String uPwd, String uSex, Date birthday, String animation, String uPhone) {
-        this.uIdu = uIdu;
-        this.uName = uName;
-        this.uPwd = uPwd;
-        this.uSex = uSex;
+    public User(Integer id, String username, String pwd, String sex, Date birthday, String animation, String phone) {
+        this.id = id;
+        this.username = username;
+        this.pwd = pwd;
+        this.sex = sex;
         this.birthday = birthday;
         this.animation = animation;
-        this.uPhone = uPhone;
-    }
-
-    public User(String uPwd, String uPhone) {
-        this.uPwd = uPwd;
-        this.uPhone = uPhone;
+        this.phone = phone;
     }
 
     public User() {
         super();
     }
 
-    public Integer getuIdu() {
-        return uIdu;
+    public Integer getId() {
+        return id;
     }
 
-    public void setuIdu(Integer uIdu) {
-        this.uIdu = uIdu;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getuName() {
-        return uName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setuName(String uName) {
-        this.uName = uName == null ? null : uName.trim();
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
     }
 
-    public String getuPwd() {
-        return uPwd;
+    public String getPwd() {
+        return pwd;
     }
 
-    public void setuPwd(String uPwd) {
-        this.uPwd = uPwd == null ? null : uPwd.trim();
+    public void setPwd(String pwd) {
+        this.pwd = pwd == null ? null : pwd.trim();
     }
 
-    public String getuSex() {
-        return uSex;
+    public String getSex() {
+        return sex;
     }
 
-    public void setuSex(String uSex) {
-        this.uSex = uSex == null ? null : uSex.trim();
+    public void setSex(String sex) {
+        this.sex = sex == null ? null : sex.trim();
     }
 
     public Date getBirthday() {
@@ -87,11 +79,11 @@ public class User {
         this.animation = animation == null ? null : animation.trim();
     }
 
-    public String getuPhone() {
-        return uPhone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setuPhone(String uPhone) {
-        this.uPhone = uPhone == null ? null : uPhone.trim();
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
     }
 }
